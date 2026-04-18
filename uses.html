@@ -44,10 +44,7 @@
             transition: transform 0.25s ease, opacity 0.25s ease;
         }
         .btn-gradient:hover { opacity: 0.92; transform: translateY(-1px); }
-        #mobile-menu { display:none; flex-direction:column; gap:0; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07); }
-        #mobile-menu.open { display:flex; }
-        #mobile-menu a { padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05); transition:color 0.2s, background 0.2s; }
-        #mobile-menu a:hover { color:#fff; background:rgba(34,197,94,0.06); }
+        /* mobile menu handled via inline styles + JS to avoid CSS/Tailwind conflicts */
         ::-webkit-scrollbar { width:8px; }
         ::-webkit-scrollbar-track { background:#050505; }
         ::-webkit-scrollbar-thumb { background:#222; border-radius:10px; }
@@ -117,13 +114,13 @@
                 </div>
             </div>
         </nav>
-        <div id="mobile-menu">
-            <a href="index.html#about" onclick="closeMobileMenu()">About</a>
-            <a href="index.html#skills" onclick="closeMobileMenu()">Skills</a>
-            <a href="index.html#projects" onclick="closeMobileMenu()">Projects</a>
-            <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
-            <a href="index.html#contact" onclick="closeMobileMenu()">Contact</a>
-            <a href="resume.html" onclick="closeMobileMenu()">Resume</a>
+        <div id="mobile-menu" style="display:none; flex-direction:column; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07);">
+            <a href="index.html#about" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">About</a>
+            <a href="index.html#skills" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Skills</a>
+            <a href="index.html#projects" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Projects</a>
+            <a href="index.html#services" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Services</a>
+            <a href="index.html#contact" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Contact</a>
+            <a href="resume.html" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#22c55e;font-size:1rem;font-weight:600;">Resume</a>
         </div>
     </header>
 
@@ -423,16 +420,19 @@
         const menuIconOpen = document.getElementById('menu-icon-open');
         const menuIconClose = document.getElementById('menu-icon-close');
 
+        let menuOpen = false;
         menuToggle.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.toggle('open');
-            menuIconOpen.classList.toggle('hidden', isOpen);
-            menuIconClose.classList.toggle('hidden', !isOpen);
+            menuOpen = !menuOpen;
+            mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+            menuIconOpen.style.display = menuOpen ? 'none' : 'block';
+            menuIconClose.style.display = menuOpen ? 'block' : 'none';
         });
 
         function closeMobileMenu() {
-            mobileMenu.classList.remove('open');
-            menuIconOpen.classList.remove('hidden');
-            menuIconClose.classList.add('hidden');
+            menuOpen = false;
+            mobileMenu.style.display = 'none';
+            menuIconOpen.style.display = 'block';
+            menuIconClose.style.display = 'none';
         }
     </script>
 </body>
