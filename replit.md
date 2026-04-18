@@ -14,12 +14,13 @@ A personal portfolio website for Ahmed Al-Jassem, a Full-Stack Web Developer. Fe
 ## Project Structure
 ```
 index.html        # Main portfolio (single-page: Hero, About, Skills, Projects, Services, Contact)
-resume.html       # Full CV / Resume page with PDF download
+resume.html       # Full CV / Resume page — web view (dark) + clean PDF print layout (white)
 project.html      # Dynamic project detail page (reads ?title= from URL, fetches from API)
 uses.html         # Tools & Setup page (editor, frameworks, hardware, hosting)
 assets/logos/     # Tech brand icons (MongoDB, Node.js, React, Tailwind)
 attached_assets/  # UI screenshots / design references
 ```
+Note: `Portfolio.html` was removed — `index.html` is the canonical main page (required for GitHub Pages).
 
 ## Running Locally
 Served via Python's built-in HTTP server on port 5000:
