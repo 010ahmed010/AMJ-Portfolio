@@ -216,6 +216,14 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+
+        #amj-logo {
+            background: linear-gradient(90deg, #22c55e 0%, #22c55e var(--scroll-percent, 0%), #ffffff var(--scroll-percent, 0%), #ffffff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.1s ease;
+        }
     </style>
 </head>
 <body>
@@ -224,7 +232,7 @@
         <nav class="w-full flex justify-center p-6">
             <div class="w-full flex justify-between items-center px-8 py-4">
                 <a href="#hero" class="flex items-center gap-1 text-2xl font-bold tracking-tighter">
-                    <span class="text-[#22c55e]">&lt;&gt;</span> AMJ
+                    <span class="text-[#22c55e]">&lt;&gt;</span> <span id="amj-logo">AMJ</span>
                 </a>
                 <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400 font-medium">
                     <a href="#about" class="hover:text-white transition">About</a>
@@ -674,6 +682,16 @@
         });
 
         loadProjects();
+
+        // Scroll-based AMJ logo fill effect
+        const amjLogo = document.getElementById('amj-logo');
+        window.addEventListener('scroll', () => {
+            const scrollStart = 0;
+            const scrollEnd = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollProgress = ((window.scrollY - scrollStart) / (scrollEnd - scrollStart)) * 100;
+            const percent = Math.min(Math.max(scrollProgress, 0), 100);
+            amjLogo.style.setProperty('--scroll-percent', `${percent}%`);
+        });
 
         // Reveal animations
         const observerOptions = { threshold: 0.1 };
