@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uses — Ahmed Al-Jassem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --matrix-green: #22c55e;
+            --dark-bg: #050505;
+            --card-bg: rgba(10, 12, 16, 0.78);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            min-height: 100vh;
+            background-color: var(--dark-bg);
+            background-image:
+                radial-gradient(circle at 12% 20%, rgba(34, 197, 94, 0.10), transparent 22%),
+                radial-gradient(circle at 82% 18%, rgba(34, 197, 94, 0.05), transparent 18%),
+                radial-gradient(circle at 70% 82%, rgba(255, 255, 255, 0.04), transparent 24%);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'Fira Code', monospace; }
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+        }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            border-color: rgba(34,197,94,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -16px rgba(34,197,94,0.2);
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .btn-gradient:hover { opacity: 0.92; transform: translateY(-1px); }
+        #mobile-menu { display:none; flex-direction:column; gap:0; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07); }
+        #mobile-menu.open { display:flex; }
+        #mobile-menu a { padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05); transition:color 0.2s, background 0.2s; }
+        #mobile-menu a:hover { color:#fff; background:rgba(34,197,94,0.06); }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:#050505; }
+        ::-webkit-scrollbar-thumb { background:#222; border-radius:10px; }
+        .uses-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+        .uses-item:hover {
+            border-color: rgba(34,197,94,0.25);
+            background: rgba(34,197,94,0.04);
+            transform: translateX(4px);
+        }
+        .uses-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(34,197,94,0.08);
+            border: 1px solid rgba(34,197,94,0.18);
+            color: #22c55e;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky top-0 z-50 w-full glass">
+        <nav class="w-full px-4 sm:px-8">
+            <div class="w-full flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center gap-1 text-2xl font-bold tracking-tighter">
+                    <span class="text-[#22c55e]">&lt;&gt;</span> <span class="text-white">AMJ</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400 font-medium">
+                    <a href="index.html#about" class="hover:text-white transition">About</a>
+                    <a href="index.html#skills" class="hover:text-white transition">Skills</a>
+                    <a href="index.html#projects" class="hover:text-white transition">Projects</a>
+                    <a href="index.html#services" class="hover:text-white transition">Services</a>
+                    <a href="index.html#contact" class="hover:text-white transition">Contact</a>
+                    <a href="resume.html" class="hover:text-white transition">Resume</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="index.html#contact" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">Hire Me</a>
+                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="Toggle menu">
+                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
+                        <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu">
+            <a href="index.html#about" onclick="closeMobileMenu()">About</a>
+            <a href="index.html#skills" onclick="closeMobileMenu()">Skills</a>
+            <a href="index.html#projects" onclick="closeMobileMenu()">Projects</a>
+            <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
+            <a href="index.html#contact" onclick="closeMobileMenu()">Contact</a>
+            <a href="resume.html" onclick="closeMobileMenu()">Resume</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 space-y-20">
+
+        <!-- Page header -->
+        <div class="space-y-5">
+            <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#22c55e] transition font-medium text-sm">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Portfolio
+            </a>
+            <div class="space-y-4">
+                <div class="section-tag"><i data-lucide="settings" class="w-3.5 h-3.5"></i> My Setup</div>
+                <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Tools I Use</h1>
+                <p class="text-zinc-400 text-lg max-w-2xl leading-relaxed">
+                    A complete breakdown of the hardware, software, and tools that power my daily development workflow — everything I rely on to build great web experiences.
+                </p>
+            </div>
+        </div>
+
+        <!-- Editor & Terminal -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="terminal" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                Editor & Terminal
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Visual Studio Code</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">My primary editor. Fast, extensible, and packed with great plugins. I spend most of my day here.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Zsh + Oh My Zsh</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Supercharged shell with plugins for git, autocomplete, and syntax highlighting. Makes the terminal actually enjoyable.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                        <i class="fa-solid fa-font"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Fira Code</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">My favorite monospace font with beautiful ligatures for code. Pairs perfectly with any dark theme.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-zinc-300">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">One Dark Pro Theme</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Easy on the eyes, great contrast ratios. The go-to dark theme for long coding sessions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Tools -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="wrench" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                Development Tools
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-brands fa-git-alt"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Git & GitHub</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Version control for everything. I live in branches, pull requests, and commit messages.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-orange-500/10 border border-orange-500/20 text-orange-400">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Vite</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Lightning-fast build tool and dev server. Replaced Create React App in all my projects — no going back.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Postman</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">API testing and documentation. Indispensable when building or consuming REST APIs.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-zinc-300">
+                        <i class="fa-brands fa-npm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">npm / pnpm</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Package management. I prefer pnpm for its speed and disk efficiency on larger monorepos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack & Frameworks -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="layers" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                Frameworks & Libraries
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-blue-400/10 border border-blue-400/20 text-blue-400">⚛</div>
+                    <div>
+                        <h4 class="font-bold">React.js</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">My primary frontend framework. Component-based, fast, and a massive ecosystem.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-white">▲</div>
+                    <div>
+                        <h4 class="font-bold">Next.js</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">For production React apps that need SSR, SSG, or full-stack API routes.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Tailwind CSS</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Utility-first CSS. I can't imagine styling without it anymore — 100% in my workflow.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-green-700/10 border border-green-700/20 text-green-500">
+                        <i class="fa-brands fa-node-js"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Node.js + Express</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Backend of choice for REST APIs and server-side logic. Great for MERN stack projects.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-green-900/20 border border-green-900/30 text-green-400">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">MongoDB</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Flexible NoSQL database for most backend projects. Pairs naturally with Node.js via Mongoose.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-blue-600/10 border border-blue-600/20 text-blue-400">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Redux Toolkit</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">State management for complex React apps. RTK has made Redux actually pleasant to write.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Tools -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="pen-tool" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                Design
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                        <i class="fa-brands fa-figma"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Figma</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">UI/UX design and prototyping. I wireframe and design in Figma before writing a single line of code.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-pink-500/10 border border-pink-500/20 text-pink-400">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Unsplash + Lucide Icons</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Free high-quality images and a clean icon library — the two essentials for any UI project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hosting & Deployment -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="cloud" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                Hosting & Deployment
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-white">▲</div>
+                    <div>
+                        <h4 class="font-bold">Vercel</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">My go-to for deploying Next.js apps. Zero-config, instant previews, and global CDN.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">GitHub Pages</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Perfect for hosting static sites and portfolios directly from a GitHub repository — free and fast.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-teal-500/10 border border-teal-500/20 text-teal-400">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Netlify</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">Used for static site hosting with form handling and serverless functions when needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hardware -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="monitor" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                Hardware
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-zinc-300">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Development Laptop</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">My primary machine for all development work — plenty of RAM and a fast processor to keep things smooth.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-brands fa-linux"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Debian Linux</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">My OS of choice. Stable, fast, and gives full control over the development environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back link -->
+        <div class="pt-2">
+            <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#22c55e] transition font-medium">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Portfolio
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="mt-12 py-8 px-4 sm:px-6 border-t border-white/5">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 max-w-4xl mx-auto text-zinc-600 text-sm">
+            <p class="font-bold tracking-widest uppercase italic">"CHALLENGE EVERY DAY"</p>
+            <p>© 2026 Ahmed Al-Jassem. All rights reserved.</p>
+            <a href="index.html" class="hover:text-[#22c55e] transition">← Back to Portfolio</a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuIconOpen.classList.toggle('hidden', isOpen);
+            menuIconClose.classList.toggle('hidden', !isOpen);
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            menuIconOpen.classList.remove('hidden');
+            menuIconClose.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

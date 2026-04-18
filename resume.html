@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume — Ahmed Al-Jassem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --matrix-green: #22c55e;
+            --dark-bg: #050505;
+            --card-bg: rgba(10, 12, 16, 0.78);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            min-height: 100vh;
+            background-color: var(--dark-bg);
+            background-image:
+                radial-gradient(circle at 12% 20%, rgba(34, 197, 94, 0.10), transparent 22%),
+                radial-gradient(circle at 82% 18%, rgba(34, 197, 94, 0.05), transparent 18%),
+                radial-gradient(circle at 70% 82%, rgba(255, 255, 255, 0.04), transparent 24%);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'Fira Code', monospace; }
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+        }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            border-color: rgba(34,197,94,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -16px rgba(34,197,94,0.2);
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .btn-gradient:hover { opacity: 0.92; transform: translateY(-1px); }
+        .timeline-line {
+            position: absolute;
+            left: 1.25rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #22c55e 0%, rgba(34,197,94,0.1) 100%);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0.55rem;
+            top: 1.5rem;
+            width: 1.4rem;
+            height: 1.4rem;
+            border-radius: 50%;
+            background: #050505;
+            border: 2px solid #22c55e;
+            box-shadow: 0 0 12px rgba(34,197,94,0.4);
+            z-index: 1;
+        }
+        #mobile-menu { display:none; flex-direction:column; gap:0; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07); }
+        #mobile-menu.open { display:flex; }
+        #mobile-menu a { padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05); transition:color 0.2s, background 0.2s; }
+        #mobile-menu a:hover { color:#fff; background:rgba(34,197,94,0.06); }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:#050505; }
+        ::-webkit-scrollbar-thumb { background:#222; border-radius:10px; }
+        @media print {
+            header, footer, .no-print { display: none !important; }
+            body { background: #fff !important; color: #000 !important; }
+            .glass { background: #f9f9f9 !important; border: 1px solid #ddd !important; box-shadow: none !important; }
+            .text-zinc-400, .text-zinc-500 { color: #444 !important; }
+            .text-\[\#22c55e\], .text-green-400 { color: #16a34a !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky top-0 z-50 w-full glass">
+        <nav class="w-full px-4 sm:px-8">
+            <div class="w-full flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center gap-1 text-2xl font-bold tracking-tighter">
+                    <span class="text-[#22c55e]">&lt;&gt;</span> <span class="text-white">AMJ</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400 font-medium">
+                    <a href="index.html#about" class="hover:text-white transition">About</a>
+                    <a href="index.html#skills" class="hover:text-white transition">Skills</a>
+                    <a href="index.html#projects" class="hover:text-white transition">Projects</a>
+                    <a href="index.html#services" class="hover:text-white transition">Services</a>
+                    <a href="index.html#contact" class="hover:text-white transition">Contact</a>
+                    <a href="resume.html" class="text-[#22c55e] font-semibold">Resume</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="window.print()" class="btn-gradient text-black px-5 py-2 rounded-full text-sm font-bold no-print">
+                        <i class="fa-solid fa-download mr-1"></i> Download PDF
+                    </button>
+                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="Toggle menu">
+                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
+                        <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu">
+            <a href="index.html#about" onclick="closeMobileMenu()">About</a>
+            <a href="index.html#skills" onclick="closeMobileMenu()">Skills</a>
+            <a href="index.html#projects" onclick="closeMobileMenu()">Projects</a>
+            <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
+            <a href="index.html#contact" onclick="closeMobileMenu()">Contact</a>
+            <a href="resume.html" onclick="closeMobileMenu()" style="color:#22c55e;">Resume</a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 space-y-16">
+
+        <!-- Hero / Intro -->
+        <div class="glass rounded-3xl p-8 sm:p-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+            <div class="space-y-3">
+                <div class="inline-flex items-center gap-2 bg-[#22c55e]/10 border border-[#22c55e]/20 px-4 py-1.5 rounded-full text-[#22c55e] text-xs font-bold mb-2">
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Curriculum Vitae
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Ahmed Al-Jassem</h1>
+                <p class="text-[#22c55e] font-semibold text-lg mono">Full-Stack Web Developer</p>
+                <div class="flex flex-wrap gap-4 text-sm text-zinc-400 pt-2">
+                    <a href="mailto:amj@developer.com" class="flex items-center gap-2 hover:text-[#22c55e] transition">
+                        <i class="fa-solid fa-envelope text-[#22c55e]"></i> amj@developer.com
+                    </a>
+                    <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-2 hover:text-[#22c55e] transition">
+                        <i class="fa-brands fa-whatsapp text-[#22c55e]"></i> +963 999 999 999
+                    </a>
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-[#22c55e]"></i> Aleppo, Syria
+                    </span>
+                </div>
+            </div>
+            <button onclick="window.print()" class="btn-gradient text-black px-7 py-3 rounded-xl font-bold text-sm whitespace-nowrap no-print flex items-center gap-2">
+                <i class="fa-solid fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+
+        <!-- Summary -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-[#22c55e]"></i></span>
+                Professional Summary
+            </h2>
+            <div class="glass rounded-2xl p-7 text-zinc-400 leading-relaxed text-base">
+                Passionate Full-Stack Web Developer with 3+ years of hands-on experience designing and building scalable, performant web applications. Specialized in the MERN stack (MongoDB, Express.js, React, Node.js) with a strong eye for UI/UX. Comfortable taking products from concept to deployment, working both independently and as part of collaborative teams. Committed to clean code, continuous learning, and delivering exceptional digital experiences.
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center"><i data-lucide="briefcase" class="w-4 h-4 text-[#22c55e]"></i></span>
+                Work Experience
+            </h2>
+            <div class="relative pl-10">
+                <div class="timeline-line"></div>
+
+                <!-- Job 1 -->
+                <div class="relative mb-10">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-2xl p-6 sm:p-8 card-hover space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold">Freelance Full-Stack Developer</h3>
+                                <p class="text-[#22c55e] font-semibold text-sm">Self-Employed · Remote</p>
+                            </div>
+                            <span class="text-xs font-bold mono bg-[#22c55e]/10 text-[#22c55e] border border-[#22c55e]/20 px-3 py-1.5 rounded-full whitespace-nowrap">2022 — Present</span>
+                        </div>
+                        <ul class="space-y-2 text-zinc-400 text-sm list-disc list-inside">
+                            <li>Designed and developed 50+ custom web applications for clients across various industries.</li>
+                            <li>Built full-stack MERN applications with REST API integrations and real-time features.</li>
+                            <li>Delivered responsive, accessible UIs using React, Tailwind CSS, and Next.js.</li>
+                            <li>Maintained a 98% client satisfaction rate through clear communication and timely delivery.</li>
+                            <li>Set up CI/CD pipelines and deployed apps on Vercel, Netlify, and GitHub Pages.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">React</span>
+                            <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">Node.js</span>
+                            <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">MongoDB</span>
+                            <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">Tailwind CSS</span>
+                            <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">Next.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative mb-10">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-2xl p-6 sm:p-8 card-hover space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold">Junior Frontend Developer</h3>
+                                <p class="text-[#22c55e] font-semibold text-sm">Tech Agency · Aleppo, Syria</p>
+                            </div>
+                            <span class="text-xs font-bold mono bg-white/5 text-zinc-400 border border-white/10 px-3 py-1.5 rounded-full whitespace-nowrap">2021 — 2022</span>
+                        </div>
+                        <ul class="space-y-2 text-zinc-400 text-sm list-disc list-inside">
+                            <li>Built and maintained responsive frontend interfaces for client web projects.</li>
+                            <li>Collaborated with backend developers to integrate REST APIs into React frontends.</li>
+                            <li>Improved page load performance by 40% through code splitting and lazy loading.</li>
+                            <li>Participated in daily standups, code reviews, and sprint planning meetings.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">React</span>
+                            <span class="px-3 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">JavaScript</span>
+                            <span class="px-3 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">CSS3</span>
+                            <span class="px-3 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center"><i data-lucide="graduation-cap" class="w-4 h-4 text-[#22c55e]"></i></span>
+                Education
+            </h2>
+            <div class="glass rounded-2xl p-6 sm:p-8 card-hover space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <h3 class="text-xl font-bold">Bachelor of Science — Computer Science</h3>
+                        <p class="text-[#22c55e] font-semibold text-sm">University of Aleppo</p>
+                    </div>
+                    <span class="text-xs font-bold mono bg-white/5 text-zinc-400 border border-white/10 px-3 py-1.5 rounded-full whitespace-nowrap">2018 — 2022</span>
+                </div>
+                <p class="text-zinc-400 text-sm">Focused on software engineering, algorithms, data structures, and web application development. Graduated with distinction.</p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center"><i data-lucide="code-2" class="w-4 h-4 text-[#22c55e]"></i></span>
+                Technical Skills
+            </h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="glass rounded-2xl p-6 space-y-4 card-hover">
+                    <h4 class="font-bold text-sm text-zinc-400 uppercase tracking-widest border-b border-white/5 pb-3">Frontend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">React.js</span>
+                        <span class="px-3 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">Next.js</span>
+                        <span class="px-3 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">JavaScript</span>
+                        <span class="px-3 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">TypeScript</span>
+                        <span class="px-3 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">Tailwind CSS</span>
+                        <span class="px-3 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">Redux</span>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-6 space-y-4 card-hover">
+                    <h4 class="font-bold text-sm text-zinc-400 uppercase tracking-widest border-b border-white/5 pb-3">Backend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">Node.js</span>
+                        <span class="px-3 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">Express.js</span>
+                        <span class="px-3 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">REST APIs</span>
+                        <span class="px-3 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">MongoDB</span>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-6 space-y-4 card-hover sm:col-span-2 lg:col-span-1">
+                    <h4 class="font-bold text-sm text-zinc-400 uppercase tracking-widest border-b border-white/5 pb-3">Tools & DevOps</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Git & GitHub</span>
+                        <span class="px-3 py-1.5 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Vite</span>
+                        <span class="px-3 py-1.5 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Figma</span>
+                        <span class="px-3 py-1.5 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Vercel</span>
+                        <span class="px-3 py-1.5 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center"><i data-lucide="award" class="w-4 h-4 text-[#22c55e]"></i></span>
+                Certifications
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-5">
+                <div class="glass rounded-2xl p-6 card-hover flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-[#22c55e] text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Meta Front-End Developer</h4>
+                        <p class="text-zinc-500 text-sm">Meta (Coursera) · 2023</p>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-6 card-hover flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-[#22c55e] text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">MongoDB Associate Developer</h4>
+                        <p class="text-zinc-500 text-sm">MongoDB University · 2023</p>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-6 card-hover flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-blue-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">The Web Developer Bootcamp</h4>
+                        <p class="text-zinc-500 text-sm">Udemy · 2022</p>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-6 card-hover flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-blue-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">JavaScript Algorithms & Data Structures</h4>
+                        <p class="text-zinc-500 text-sm">freeCodeCamp · 2022</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center"><i data-lucide="globe" class="w-4 h-4 text-[#22c55e]"></i></span>
+                Languages
+            </h2>
+            <div class="grid sm:grid-cols-3 gap-5">
+                <div class="glass rounded-2xl p-6 card-hover text-center space-y-2">
+                    <div class="text-3xl mb-1">🇸🇦</div>
+                    <h4 class="font-bold">Arabic</h4>
+                    <p class="text-[#22c55e] text-sm font-semibold">Native</p>
+                </div>
+                <div class="glass rounded-2xl p-6 card-hover text-center space-y-2">
+                    <div class="text-3xl mb-1">🇬🇧</div>
+                    <h4 class="font-bold">English</h4>
+                    <p class="text-blue-400 text-sm font-semibold">Professional</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Portfolio -->
+        <div class="pt-4 no-print">
+            <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#22c55e] transition font-medium">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Portfolio
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="mt-12 py-8 px-4 sm:px-6 border-t border-white/5 text-center no-print">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 max-w-5xl mx-auto text-zinc-600 text-sm">
+            <p class="font-bold tracking-widest uppercase italic">"CHALLENGE EVERY DAY"</p>
+            <p>© 2026 Ahmed Al-Jassem. All rights reserved.</p>
+            <a href="index.html" class="hover:text-[#22c55e] transition">← Back to Portfolio</a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuIconOpen.classList.toggle('hidden', isOpen);
+            menuIconClose.classList.toggle('hidden', !isOpen);
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            menuIconOpen.classList.remove('hidden');
+            menuIconClose.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

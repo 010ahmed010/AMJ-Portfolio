@@ -13,9 +13,12 @@ A personal portfolio website for Ahmed Al-Jassem, a Full-Stack Web Developer. Fe
 
 ## Project Structure
 ```
-Portfolio.html        # Main entry point (all HTML, CSS, JS in one file)
-assets/logos/         # Tech brand icons (MongoDB, Node.js, React, Tailwind)
-attached_assets/      # UI screenshots / design references
+index.html        # Main portfolio (single-page: Hero, About, Skills, Projects, Services, Contact)
+resume.html       # Full CV / Resume page with PDF download
+project.html      # Dynamic project detail page (reads ?title= from URL, fetches from API)
+uses.html         # Tools & Setup page (editor, frameworks, hardware, hosting)
+assets/logos/     # Tech brand icons (MongoDB, Node.js, React, Tailwind)
+attached_assets/  # UI screenshots / design references
 ```
 
 ## Running Locally

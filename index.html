@@ -265,6 +265,7 @@
                     <a href="#projects" class="hover:text-white transition">Projects</a>
                     <a href="#services" class="hover:text-white transition">Services</a>
                     <a href="#contact" class="hover:text-white transition">Contact</a>
+                    <a href="resume.html" class="hover:text-white transition">Resume</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">Hire Me</a>
@@ -283,6 +284,7 @@
             <a href="#projects" onclick="closeMobileMenu()">Projects</a>
             <a href="#services" onclick="closeMobileMenu()">Services</a>
             <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+            <a href="resume.html" style="color:#22c55e;">Resume</a>
         </div>
     </header>
 
@@ -349,6 +351,14 @@
                         <div><h5 class="text-2xl sm:text-3xl font-bold">45+</h5><p class="text-zinc-500 text-xs sm:text-sm">Happy Clients</p></div>
                         <div><h5 class="text-2xl sm:text-3xl font-bold">2.5K+</h5><p class="text-zinc-500 text-xs sm:text-sm">Code Commits</p></div>
                         <div><h5 class="text-2xl sm:text-3xl font-bold">500+</h5><p class="text-zinc-500 text-xs sm:text-sm">GitHub Stars</p></div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <a href="resume.html" class="inline-flex items-center gap-2 bg-[#22c55e] text-black px-6 py-3 rounded-xl font-bold text-sm hover:opacity-90 transition">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> View Resume
+                        </a>
+                        <a href="uses.html" class="inline-flex items-center gap-2 glass px-6 py-3 rounded-xl font-semibold text-sm text-zinc-300 hover:border-[#22c55e]/30 hover:text-white transition">
+                            <i data-lucide="settings" class="w-4 h-4"></i> My Setup
+                        </a>
                     </div>
                 </div>
                 
@@ -612,6 +622,8 @@
                             <li><a href="#projects" class="hover:text-[#22c55e] transition">Projects</a></li>
                             <li><a href="#services" class="hover:text-[#22c55e] transition">Services</a></li>
                             <li><a href="#contact" class="hover:text-[#22c55e] transition">Contact</a></li>
+                            <li><a href="resume.html" class="hover:text-[#22c55e] transition">Resume</a></li>
+                            <li><a href="uses.html" class="hover:text-[#22c55e] transition">My Setup</a></li>
                         </ul>
                     </div>
                 </div>
@@ -739,20 +751,26 @@
             const imageUrl = project.imageURL ? project.imageURL.trim() : '';
             const cleanImage = imageUrl || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop';
             const safeLink = normalizeLink(project.redirectURL);
+            const detailLink = `project.html?title=${encodeURIComponent(project.title)}`;
             const categoryLabel = determineCategory(project) === 'fullstack' ? 'Full Stack' : 'Project';
             const techTags = (project.technologies || []).map(tech => `<span class="px-4 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">${tech}</span>`).join('');
             return `
-                <div class="glass project-card rounded-xl group p-1">
-                    <div class="w-full h-64 sm:h-80 bg-zinc-900 rounded-t-xl mb-6 sm:mb-8 overflow-hidden relative group">
+                <div class="glass project-card rounded-xl group p-1 cursor-pointer" onclick="window.location.href='${detailLink}'">
+                    <div class="w-full h-64 sm:h-80 bg-zinc-900 rounded-t-xl mb-6 sm:mb-8 overflow-hidden relative">
                         <img src="${cleanImage}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="${project.title}">
                         <div class="absolute top-4 left-4 project-tag">${categoryLabel}</div>
-                        <a href="${safeLink}" target="_blank" rel="noreferrer" class="project-link bg-zinc-900 rounded-xl" aria-label="Open ${project.title}">
+                        <a href="${safeLink}" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="project-link bg-zinc-900 rounded-xl" aria-label="Live demo of ${project.title}" title="Open live demo">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                     <h4 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 px-2">${project.title}</h4>
-                    <p class="text-zinc-500 text-sm sm:text-base mb-6 sm:mb-8 px-2">${project.description}</p>
+                    <p class="text-zinc-500 text-sm sm:text-base mb-4 px-2">${project.description}</p>
                     <div class="flex flex-wrap gap-2 mb-4 px-3">${techTags}</div>
+                    <div class="px-3 pb-3">
+                        <span class="text-xs text-[#22c55e] font-semibold flex items-center gap-1">
+                            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
                 </div>
             `;
         }
