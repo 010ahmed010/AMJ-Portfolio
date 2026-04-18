@@ -264,10 +264,10 @@
                 <button class="w-fit bg-white text-black px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition">Get in Touch</button>
                 
                 <div class="grid grid-cols-4 gap-8 pt-12 border-t border-white/5">
-                    <div><h4 class="text-3xl font-bold text-[#22c55e]">1+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Years Exp</p></div>
-                    <div><h4 class="text-3xl font-bold text-[#22c55e]">10+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Projects</p></div>
-                    <div><h4 class="text-3xl font-bold text-[#22c55e]">8+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Techs</p></div>
-                    <div><h4 class="text-3xl font-bold text-[#22c55e]">83%</h4><p class="text-xs text-zinc-500 uppercase mt-1">Satisfaction</p></div>
+                    <div><h4 class="text-3xl font-bold text-[#22c55e]">3+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Years Exp</p></div>
+                    <div><h4 class="text-3xl font-bold text-[#22c55e]">50+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Projects</p></div>
+                    <div><h4 class="text-3xl font-bold text-[#22c55e]">15+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Techs</p></div>
+                    <div><h4 class="text-3xl font-bold text-[#22c55e]">98%</h4><p class="text-xs text-zinc-500 uppercase mt-1">Satisfaction</p></div>
                 </div>
             </div>
             
@@ -482,6 +482,12 @@
                             </div>
                             <div><p class="text-xs text-zinc-500 uppercase">Email</p><p class="text-lg font-bold">amj@developer.com</p></div>
                         </div>
+                        <div class="flex items-center gap-6 glass p-6 rounded-3xl">
+                            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20">
+                                <i class="fa-solid fa-location-dot text-[#22c55e]"></i>
+                            </div>
+                            <div><p class="text-xs text-zinc-500 uppercase">Location</p><p class="text-lg font-bold">Aleppo, Syria</p></div>
+                        </div>
                     </div>
                     
                     <div class="space-y-4">
@@ -511,6 +517,10 @@
                             <i class="fa-solid fa-envelope text-[#22c55e]"></i>
                             <span class="text-sm font-medium">amj@developer.com</span>
                         </div>
+                        <div class="flex items-center gap-3 glass p-4 rounded-xl">
+                            <i class="fa-solid fa-location-dot text-[#22c55e]"></i>
+                            <span class="text-sm font-medium">Aleppo, Syria</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -530,10 +540,10 @@
                     <h5 class="text-xl font-bold">Connect With Me</h5>
                     <p class="text-zinc-500 text-sm leading-relaxed">Let's connect and create something amazing together.</p>
                     <div class="flex gap-4">
-                        <div class="p-3 glass rounded-lg cursor-pointer hover:bg-white hover:text-black transition"><i class="fa-brands fa-github text-lg"></i></div>
-                        <div class="p-3 glass rounded-lg text-[#22c55e] cursor-pointer hover:bg-white hover:text-black transition"><i class="fa-brands fa-linkedin-in text-lg"></i></div>
-                        <div class="p-3 glass rounded-lg cursor-pointer hover:bg-white hover:text-black transition"><i class="fa-brands fa-twitter text-lg"></i></div>
-                        <div class="p-3 glass rounded-lg cursor-pointer hover:bg-white hover:text-black transition"><i class="fa-solid fa-globe text-lg"></i></div>
+                        <div class="p-3 glass rounded-lg"><i class="fa-brands fa-github text-lg"></i></div>
+                        <div class="p-3 glass rounded-lg text-[#22c55e]"><i class="fa-brands fa-linkedin-in text-lg"></i></div>
+                        <div class="p-3 glass rounded-lg"><i class="fa-brands fa-twitter text-lg"></i></div>
+                        <div class="p-3 glass rounded-lg"><i class="fa-solid fa-globe text-lg"></i></div>
                     </div>
                 </div>
             </div>
@@ -588,7 +598,6 @@
         const projectsGrid = document.getElementById('projects-grid');
         const projectEmpty = document.getElementById('project-empty');
         let allProjects = [];
-        let contactDetails = {};
 
         function normalizeLink(url) {
             if (!url) return '#';
@@ -650,95 +659,20 @@
             renderProjects(filtered);
         }
 
-        function renderContactSection() {
-            const contactContainer = document.querySelector('#contact .space-y-6');
-            if (!contactContainer) return;
-            let html = '';
-            if (contactDetails.email) {
-                html += `
-                    <div class="flex items-center gap-6 glass p-6 rounded-3xl hover:transform hover:scale-105 transition">
-                        <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20">
-                            <i class="fa-solid fa-envelope text-[#22c55e]"></i>
-                        </div>
-                        <div><p class="text-xs text-zinc-500 uppercase">Email</p><p class="text-lg font-bold">${contactDetails.email}</p></div>
-                    </div>
-                `;
-            }
-            if (contactDetails.phone) {
-                html += `
-                    <div class="flex items-center gap-6 glass p-6 rounded-3xl hover:transform hover:scale-105 transition">
-                        <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20">
-                            <i class="fa-solid fa-phone text-[#22c55e]"></i>
-                        </div>
-                        <div><p class="text-xs text-zinc-500 uppercase">Phone</p><p class="text-lg font-bold">${contactDetails.phone}</p></div>
-                    </div>
-                `;
-            }
-            if (contactDetails.whatsapp) {
-                html += `
-                    <div class="flex items-center gap-6 glass p-6 rounded-3xl hover:transform hover:scale-105 transition">
-                        <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20">
-                            <i class="fa-brands fa-whatsapp text-[#22c55e]"></i>
-                        </div>
-                        <div><p class="text-xs text-zinc-500 uppercase">WhatsApp</p><p class="text-lg font-bold">${contactDetails.whatsapp}</p></div>
-                    </div>
-                `;
-            }
-            contactContainer.innerHTML = html;
-        }
-
-        function renderFooter() {
-            const footerContact = document.querySelector('footer .space-y-4');
-            if (!footerContact) return;
-            let html = '';
-            if (contactDetails.email) {
-                html += `
-                    <div class="flex items-center gap-3 glass p-4 rounded-xl hover:transform hover:scale-105 transition">
-                        <i class="fa-solid fa-envelope text-[#22c55e]"></i>
-                        <span class="text-sm font-medium">${contactDetails.email}</span>
-                    </div>
-                `;
-            }
-            if (contactDetails.phone) {
-                html += `
-                    <div class="flex items-center gap-3 glass p-4 rounded-xl hover:transform hover:scale-105 transition">
-                        <i class="fa-solid fa-phone text-[#22c55e]"></i>
-                        <span class="text-sm font-medium">${contactDetails.phone}</span>
-                    </div>
-                `;
-            }
-            footerContact.innerHTML = html;
-        }
-
-        function updateSocialLinks() {
-            const linkedinLink = document.querySelector('#contact .fa-linkedin-in').closest('div');
-            if (linkedinLink && contactDetails.linkedin) {
-                linkedinLink.innerHTML = `<a href="${contactDetails.linkedin}" target="_blank" rel="noreferrer" class="p-4 glass rounded-xl cursor-pointer hover:bg-white hover:text-black transition text-[#22c55e]"><i class="fa-brands fa-linkedin-in"></i></a>`;
-            }
-            const footerLinkedin = document.querySelector('footer .fa-linkedin-in').closest('div');
-            if (footerLinkedin && contactDetails.linkedin) {
-                footerLinkedin.innerHTML = `<a href="${contactDetails.linkedin}" target="_blank" rel="noreferrer" class="p-3 glass rounded-lg text-[#22c55e]"><i class="fa-brands fa-linkedin-in text-lg"></i></a>`;
-            }
-        }
-
-        async function loadData() {
+        async function loadProjects() {
             try {
                 const response = await fetch('https://010ahmed010.github.io/api/AMJ-Portfolio.json');
                 const data = await response.json();
-                contactDetails = data.contactDetails || {};
-                const items = data.projects || [];
+                const items = Object.values(data.projects || {});
                 allProjects = items.map(project => ({
                     ...project,
                     imageURL: project.imageURL ? project.imageURL.trim() : '',
                     redirectURL: project.redirectURL ? project.redirectURL.trim() : ''
                 }));
                 filterProjects('all');
-                renderContactSection();
-                renderFooter();
-                updateSocialLinks();
             } catch (error) {
                 projectsGrid.innerHTML = '';
-                projectEmpty.textContent = 'Failed to load data. Please refresh the page.';
+                projectEmpty.textContent = 'Failed to load projects. Please refresh the page.';
                 projectEmpty.classList.remove('hidden');
             }
         }
@@ -747,7 +681,7 @@
             button.addEventListener('click', () => filterProjects(button.dataset.filter));
         });
 
-        loadData();
+        loadProjects();
 
         // Scroll-based AMJ logo fill effect
         const amjLogo = document.getElementById('amj-logo');
