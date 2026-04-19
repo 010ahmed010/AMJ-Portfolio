@@ -17,6 +17,11 @@
             --border: rgba(255, 255, 255, 0.08);
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
         body {
             min-height: 100vh;
             background-color: var(--dark-bg);
@@ -26,7 +31,6 @@
                 radial-gradient(circle at 70% 82%, rgba(255, 255, 255, 0.05), transparent 24%);
             color: #ffffff;
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
         }
 
         .mono { font-family: 'Fira Code', monospace; }
@@ -40,7 +44,8 @@
 
         .bg-glow {
             position: absolute;
-            width: 650px;
+            width: min(650px, calc(100vw - 3rem));
+            max-width: 650px;
             height: 650px;
             background: radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, transparent 70%);
             z-index: -1;
@@ -249,7 +254,7 @@
                 <div class="flex items-center gap-3">
                     <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">Hire Me</a>
                     <!-- Hamburger button -->
-                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="Toggle menu">
+                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
                         <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
                         <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
                     </button>
@@ -257,13 +262,13 @@
             </div>
         </nav>
         <!-- Mobile menu -->
-        <div id="mobile-menu" style="display:none; flex-direction:column; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07);">
-            <a href="#about" onclick="closeMobileMenu()" style="display:block; padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05);">About</a>
-            <a href="#skills" onclick="closeMobileMenu()" style="display:block; padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05);">Skills</a>
-            <a href="#projects" onclick="closeMobileMenu()" style="display:block; padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05);">Projects</a>
-            <a href="#services" onclick="closeMobileMenu()" style="display:block; padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05);">Services</a>
-            <a href="#contact" onclick="closeMobileMenu()" style="display:block; padding:1rem 2rem; color:#a1a1aa; font-size:1rem; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.05);">Contact</a>
-            <a href="resume.html" style="display:block; padding:1rem 2rem; color:#22c55e; font-size:1rem; font-weight:600;">Resume</a>
+        <div id="mobile-menu" class="hidden md:hidden flex-col w-full bg-[rgba(5,5,5,0.97)] border-t border-white/10">
+            <a href="#about" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">About</a>
+            <a href="#skills" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Skills</a>
+            <a href="#projects" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Projects</a>
+            <a href="#services" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Services</a>
+            <a href="#contact" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Contact</a>
+            <a href="resume.html" onclick="closeMobileMenu()" class="block px-6 py-4 text-[#22c55e] text-base font-semibold">Resume</a>
         </div>
     </header>
 
@@ -642,7 +647,7 @@
     <script>
         lucide.createIcons();
 
-        // Mobile menu toggle — use style.display to avoid any CSS/Tailwind conflict
+        // Mobile menu toggle uses Tailwind utility classes for consistent responsive behavior
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIconOpen = document.getElementById('menu-icon-open');
@@ -651,16 +656,20 @@
 
         menuToggle.addEventListener('click', () => {
             menuOpen = !menuOpen;
-            mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+            mobileMenu.classList.toggle('hidden', !menuOpen);
+            mobileMenu.classList.toggle('flex', menuOpen);
             menuIconOpen.style.display = menuOpen ? 'none' : 'block';
             menuIconClose.style.display = menuOpen ? 'block' : 'none';
+            menuToggle.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
         });
 
         function closeMobileMenu() {
             menuOpen = false;
-            mobileMenu.style.display = 'none';
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
             menuIconOpen.style.display = 'block';
             menuIconClose.style.display = 'none';
+            menuToggle.setAttribute('aria-expanded', 'false');
         }
 
         // Terminal Auto-Type Logic
