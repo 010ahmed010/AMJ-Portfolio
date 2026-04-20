@@ -234,14 +234,12 @@
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header class="fixed top-0 left-0 right-0 z-50 w-full glass">
         <nav class="w-full px-4 sm:px-8">
             <div class="w-full flex justify-between items-center py-4">
                 <a href="#hero" class="flex items-center gap-1 text-2xl font-bold tracking-tighter">
                     <span class="text-[#22c55e]">&lt;&gt;</span> <span id="amj-logo">AMJ</span>
                 </a>
-                <!-- Desktop nav -->
                 <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400 font-medium">
                     <a href="#about" class="hover:text-white transition">About</a>
                     <a href="#skills" class="hover:text-white transition">Skills</a>
@@ -251,8 +249,7 @@
                     <a href="resume.html" class="hover:text-white transition">Resume</a>
                 </div>
                 <div class="flex items-center gap-3">
-                    <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">Hire Me</a>
-                    <!-- Hamburger button -->
+                    <a id="nav-hire-me" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">Hire Me</a>
                     <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
                         <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
                         <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
@@ -260,7 +257,6 @@
                 </div>
             </div>
         </nav>
-        <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden flex-col w-full bg-[rgba(5,5,5,0.97)] border-t border-white/10">
             <a href="#about" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">About</a>
             <a href="#skills" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Skills</a>
@@ -272,7 +268,6 @@
     </header>
 
     <main>
-        <!-- HERO -->
         <section id="hero" class="min-h-screen flex items-center justify-center relative px-4 sm:px-6">
             <div class="bg-glow top-1/4 left-1/4"></div>
             <div class="max-w-7xl w-full grid lg:grid-cols-2 gap-10 pt-24 pb-16">
@@ -321,7 +316,6 @@
             </div>
         </section>
 
-        <!-- ABOUT -->
         <section id="about" class="py-20 sm:py-32 px-4 sm:px-6">
             <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20">
                 <div class="space-y-6 sm:space-y-8">
@@ -365,7 +359,6 @@
             </div>
         </section>
 
-        <!-- SKILLS -->
         <section id="skills" class="py-20 sm:py-32 bg-black/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <div class="text-center mb-12 sm:mb-16">
@@ -397,10 +390,6 @@
                                 <div class="flex justify-between text-sm"><span class="text-zinc-300">Tailwind CSS</span> <span class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span></div>
                                 <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[100%]"></div></div>
                             </div>
-                            <!-- <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Redux</span> <span class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[88%]"></div></div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="glass skill-card p-6 sm:p-8 rounded-[1rem] space-y-8 sm:space-y-10">
@@ -445,7 +434,6 @@
             </div>
         </section>
 
-        <!-- PROJECTS -->
         <section id="projects" class="py-20 sm:py-32 px-4 sm:px-6">
             <div class="max-w-7xl mx-auto text-center space-y-12 sm:space-y-16">
                 <h2 class="text-4xl sm:text-5xl font-bold">Showcase my best work</h2>
@@ -460,7 +448,6 @@
             </div>
         </section>
 
-        <!-- SERVICES -->
         <section id="services" class="py-20 sm:py-32 px-4 sm:px-6 bg-zinc-950/50">
             <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="glass p-8 sm:p-10 rounded-[2.5rem] card-hover space-y-6">
@@ -487,7 +474,6 @@
             </div>
         </section>
 
-        <!-- CONTACT -->
         <section id="contact" class="py-20 sm:py-32 px-4 sm:px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center space-y-4 mb-14 sm:mb-20">
@@ -496,7 +482,6 @@
                 </div>
                 
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
-                    <!-- Contact form -->
                     <div class="glass p-7 sm:p-10 rounded-[3rem] space-y-6 sm:space-y-8">
                         <div class="space-y-2">
                             <label class="text-sm font-medium text-zinc-400">Name</label>
@@ -515,33 +500,29 @@
                         </button>
                     </div>
                     
-                    <!-- Contact info -->
                     <div class="space-y-8 sm:space-y-12">
                         <h3 class="text-2xl sm:text-3xl font-bold">Let's Connect</h3>
                         <p class="text-zinc-400 leading-relaxed">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
                         
                         <div class="space-y-4 sm:space-y-6">
-                            <!-- Email -->
-                            <a href="mailto:amj@developer.com" class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
+                            <a id="contact-email-link" href="mailto:amj@developer.com" class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
                                 <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
                                     <i class="fa-solid fa-envelope text-[#22c55e]"></i>
                                 </div>
                                 <div>
                                     <p class="text-xs text-zinc-500 uppercase tracking-widest">Email</p>
-                                    <p class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">amj@developer.com</p>
+                                    <p id="contact-email-text" class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">amj@developer.com</p>
                                 </div>
                             </a>
-                            <!-- WhatsApp -->
-                            <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
+                            <a id="contact-whatsapp-link" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
                                 <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
                                     <i class="fa-brands fa-whatsapp text-[#22c55e] text-lg"></i>
                                 </div>
                                 <div>
                                     <p class="text-xs text-zinc-500 uppercase tracking-widest">WhatsApp / Phone</p>
-                                    <p class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">+963 999 999 999</p>
+                                    <p id="contact-phone-text" class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">+963 999 999 999</p>
                                 </div>
                             </a>
-                            <!-- Location -->
                             <div class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl">
                                 <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
                                     <i class="fa-solid fa-location-dot text-[#22c55e]"></i>
@@ -556,13 +537,13 @@
                         <div class="space-y-4">
                             <p class="text-sm text-zinc-500">Connect with me</p>
                             <div class="flex gap-3 sm:gap-4">
-                                <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="social-link p-4 glass rounded-xl text-[#25d366] hover:bg-[#25d366] hover:text-white" title="WhatsApp">
+                                <a id="social-whatsapp" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="social-link p-4 glass rounded-xl text-[#25d366] hover:bg-[#25d366] hover:text-white" title="WhatsApp">
                                     <i class="fa-brands fa-whatsapp text-lg"></i>
                                 </a>
-                                <a href="tel:+963999999999" class="social-link p-4 glass rounded-xl text-[#22c55e] hover:bg-[#22c55e] hover:text-black" title="Phone">
+                                <a id="social-phone" href="tel:+963999999999" class="social-link p-4 glass rounded-xl text-[#22c55e] hover:bg-[#22c55e] hover:text-black" title="Phone">
                                     <i class="fa-solid fa-phone text-lg"></i>
                                 </a>
-                                <a href="mailto:amj@developer.com" class="social-link p-4 glass rounded-xl hover:bg-white hover:text-black transition" title="Email">
+                                <a id="social-email" href="mailto:amj@developer.com" class="social-link p-4 glass rounded-xl hover:bg-white hover:text-black transition" title="Email">
                                     <i class="fa-solid fa-envelope text-lg"></i>
                                 </a>
                                 <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="social-link p-4 glass rounded-xl text-[#22c55e] hover:bg-[#0077b5] hover:text-white transition" title="LinkedIn">
@@ -576,7 +557,6 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="pt-16 sm:pt-24 pb-10 sm:pb-12 px-4 sm:px-6 border-t border-white/5 relative overflow-hidden">
         <div class="bg-glow bottom-0 right-0 opacity-50"></div>
         <div class="max-w-7xl mx-auto">
@@ -585,13 +565,13 @@
                     <h4 class="text-4xl font-bold text-[#22c55e]">AMJ</h4>
                     <p class="text-zinc-500 leading-relaxed">Crafting seamless digital experiences with modern web technologies and engineering precision.</p>
                     <div class="space-y-3">
-                        <a href="mailto:amj@developer.com" class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
+                        <a id="footer-email-link" href="mailto:amj@developer.com" class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
                             <i class="fa-solid fa-envelope text-[#22c55e]"></i>
-                            <span class="text-sm font-medium group-hover:text-[#22c55e] transition">amj@developer.com</span>
+                            <span id="footer-email-text" class="text-sm font-medium group-hover:text-[#22c55e] transition">amj@developer.com</span>
                         </a>
-                        <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
+                        <a id="footer-whatsapp-link" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
                             <i class="fa-brands fa-whatsapp text-[#22c55e]"></i>
-                            <span class="text-sm font-medium group-hover:text-[#22c55e] transition">+963 999 999 999</span>
+                            <span id="footer-phone-text" class="text-sm font-medium group-hover:text-[#22c55e] transition">+963 999 999 999</span>
                         </a>
                         <div class="flex items-center gap-3 glass p-4 rounded-xl">
                             <i class="fa-solid fa-location-dot text-[#22c55e]"></i>
@@ -619,13 +599,13 @@
                     <h5 class="text-xl font-bold">Connect With Me</h5>
                     <p class="text-zinc-500 text-sm leading-relaxed">Let's connect and create something amazing together.</p>
                     <div class="flex flex-wrap gap-3 sm:gap-4">
-                        <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="social-link p-3 glass rounded-lg text-[#25d366] hover:bg-[#25d366] hover:text-white" title="WhatsApp">
+                        <a id="footer-social-whatsapp" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="social-link p-3 glass rounded-lg text-[#25d366] hover:bg-[#25d366] hover:text-white" title="WhatsApp">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                         </a>
-                        <a href="tel:+963999999999" class="social-link p-3 glass rounded-lg text-[#22c55e] hover:bg-[#22c55e] hover:text-black" title="Phone">
+                        <a id="footer-social-phone" href="tel:+963999999999" class="social-link p-3 glass rounded-lg text-[#22c55e] hover:bg-[#22c55e] hover:text-black" title="Phone">
                             <i class="fa-solid fa-phone text-lg"></i>
                         </a>
-                        <a href="mailto:amj@developer.com" class="social-link p-3 glass rounded-lg hover:bg-white hover:text-black transition" title="Email">
+                        <a id="footer-social-email" href="mailto:amj@developer.com" class="social-link p-3 glass rounded-lg hover:bg-white hover:text-black transition" title="Email">
                             <i class="fa-solid fa-envelope text-lg"></i>
                         </a>
                         <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="social-link p-3 glass rounded-lg text-[#22c55e] hover:bg-[#0077b5] hover:text-white transition" title="LinkedIn">
@@ -814,7 +794,71 @@
             button.addEventListener('click', () => filterProjects(button.dataset.filter));
         });
 
+        // --- NEW CONTACT LOADING LOGIC ---
+        async function loadContactDetails() {
+            try {
+                const response = await fetch('https://010ahmed010.github.io/api/AMJ-Portfolio.json');
+                const data = await response.json();
+                const contact = data.contactDetails;
+
+                if (contact) {
+                    const phone = contact.phone;
+                    const whatsapp = contact.whatsapp;
+                    const email = contact.email;
+                    const waLink = `https://wa.me/${whatsapp.replace(/\+/g, '').replace(/\s/g, '')}`;
+
+                    // --- NAV & HERO UPDATES ---
+                    const navHireMe = document.getElementById('nav-hire-me');
+                    if (navHireMe) navHireMe.href = waLink;
+
+                    // --- CONTACT SECTION UPDATES ---
+                    const phoneText = document.getElementById('contact-phone-text');
+                    const whatsappLink = document.getElementById('contact-whatsapp-link');
+                    const emailText = document.getElementById('contact-email-text');
+                    const emailLink = document.getElementById('contact-email-link');
+
+                    if (phoneText) phoneText.textContent = phone;
+                    if (whatsappLink) whatsappLink.href = waLink;
+                    if (emailText) emailText.textContent = email;
+                    if (emailLink) emailLink.href = `mailto:${email}`;
+
+                    // Social icons in Contact Section
+                    const socialWa = document.getElementById('social-whatsapp');
+                    const socialPhone = document.getElementById('social-phone');
+                    const socialEmail = document.getElementById('social-email');
+
+                    if (socialWa) socialWa.href = waLink;
+                    if (socialPhone) socialPhone.href = `tel:${phone.replace(/\s/g, '')}`;
+                    if (socialEmail) socialEmail.href = `mailto:${email}`;
+
+                    // --- FOOTER UPDATES ---
+                    const footerEmailLink = document.getElementById('footer-email-link');
+                    const footerEmailText = document.getElementById('footer-email-text');
+                    const footerWaLink = document.getElementById('footer-whatsapp-link');
+                    const footerPhoneText = document.getElementById('footer-phone-text');
+
+                    if (footerEmailLink) footerEmailLink.href = `mailto:${email}`;
+                    if (footerEmailText) footerEmailText.textContent = email;
+                    if (footerWaLink) footerWaLink.href = waLink;
+                    if (footerPhoneText) footerPhoneText.textContent = phone;
+
+                    // Social icons in Footer
+                    const footerSocialWa = document.getElementById('footer-social-whatsapp');
+                    const footerSocialPhone = document.getElementById('footer-social-phone');
+                    const footerSocialEmail = document.getElementById('footer-social-email');
+
+                    if (footerSocialWa) footerSocialWa.href = waLink;
+                    if (footerSocialPhone) footerSocialPhone.href = `tel:${phone.replace(/\s/g, '')}`;
+                    if (footerSocialEmail) footerSocialEmail.href = `mailto:${email}`;
+                }
+            } catch (error) {
+                console.error('Error fetching contact details:', error);
+            }
+        }
+
+        // Initialize loading
         loadProjects();
+        loadContactDetails();
 
         // Scroll-based AMJ logo fill effect
         const amjLogo = document.getElementById('amj-logo');
