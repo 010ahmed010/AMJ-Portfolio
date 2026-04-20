@@ -27,6 +27,13 @@
             overflow-x: hidden;
         }
         .mono { font-family: 'Fira Code', monospace; }
+        #amj-logo {
+            background: linear-gradient(90deg, #22c55e 0%, #22c55e var(--scroll-percent, 0%), #ffffff var(--scroll-percent, 0%), #ffffff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.1s ease;
+        }
         .glass {
             background: var(--card-bg);
             backdrop-filter: blur(18px);
@@ -95,7 +102,7 @@
         <nav class="w-full px-4 sm:px-8">
             <div class="w-full flex justify-between items-center py-4">
                 <a href="index.html" class="flex items-center gap-1 text-2xl font-bold tracking-tighter">
-                    <span class="text-[#22c55e]">&lt;&gt;</span> <span class="text-white">AMJ</span>
+                    <span class="text-[#22c55e]">&lt;&gt;</span> <span id="amj-logo">AMJ</span>
                 </a>
                 <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400 font-medium">
                     <a href="index.html#about" class="hover:text-white transition">About</a>
@@ -434,6 +441,14 @@
             menuIconOpen.style.display = 'block';
             menuIconClose.style.display = 'none';
         }
+
+        const amjLogo = document.getElementById('amj-logo');
+        window.addEventListener('scroll', () => {
+            const scrollEnd = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollProgress = scrollEnd > 0 ? (window.scrollY / scrollEnd) * 100 : 0;
+            const percent = Math.min(Math.max(scrollProgress, 0), 100);
+            amjLogo.style.setProperty('--scroll-percent', `${percent}%`);
+        });
     </script>
 </body>
 </html>
