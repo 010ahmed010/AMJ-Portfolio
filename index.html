@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --matrix-green: #22c55e;
@@ -33,7 +36,9 @@
             font-family: 'Inter', sans-serif;
         }
 
-        .mono { font-family: 'Fira Code', monospace; }
+        .mono {
+            font-family: 'Fira Code', monospace;
+        }
 
         .glass {
             background: var(--card-bg);
@@ -190,7 +195,10 @@
             box-shadow: 0 0 16px rgba(34, 197, 94, 0.32);
         }
 
-        .card-hover { transition: all 0.3s ease; }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
         .card-hover:hover {
             border-color: var(--matrix-green);
             transform: translateY(-6px);
@@ -201,7 +209,11 @@
             background: linear-gradient(90deg, #22c55e, #4ade80);
             transition: transform 0.25s ease, opacity 0.25s ease;
         }
-        .btn-gradient:hover { opacity: 0.95; transform: translateY(-1px); }
+
+        .btn-gradient:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
 
         .cursor {
             display: inline-block;
@@ -212,11 +224,25 @@
             animation: blink 1s infinite;
             vertical-align: middle;
         }
-        @keyframes blink { 50% { opacity: 0; } }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+        }
 
         #amj-logo {
             background: linear-gradient(90deg, #22c55e 0%, #22c55e var(--scroll-percent, 0%), #ffffff var(--scroll-percent, 0%), #ffffff 100%);
@@ -230,9 +256,13 @@
         .social-link {
             transition: background 0.2s, color 0.2s, transform 0.2s;
         }
-        .social-link:hover { transform: translateY(-3px); }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
     </style>
 </head>
+
 <body>
     <header class="fixed top-0 left-0 right-0 z-50 w-full glass">
         <nav class="w-full px-4 sm:px-8">
@@ -249,8 +279,11 @@
                     <a href="resume.html" class="hover:text-white transition">Resume</a>
                 </div>
                 <div class="flex items-center gap-3">
-                    <a id="nav-hire-me" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">Hire Me</a>
-                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
+                    <a id="nav-hire-me" href="https://wa.me/963999999999" target="_blank" rel="noreferrer"
+                        class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">Hire
+                        Me</a>
+                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition"
+                        aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
                         <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
                         <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
                     </button>
@@ -258,12 +291,18 @@
             </div>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden flex-col w-full bg-[rgba(5,5,5,0.97)] border-t border-white/10">
-            <a href="#about" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">About</a>
-            <a href="#skills" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Skills</a>
-            <a href="#projects" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Projects</a>
-            <a href="#services" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Services</a>
-            <a href="#contact" onclick="closeMobileMenu()" class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Contact</a>
-            <a href="resume.html" onclick="closeMobileMenu()" class="block px-6 py-4 text-[#22c55e] text-base font-semibold">Resume</a>
+            <a href="#about" onclick="closeMobileMenu()"
+                class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">About</a>
+            <a href="#skills" onclick="closeMobileMenu()"
+                class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Skills</a>
+            <a href="#projects" onclick="closeMobileMenu()"
+                class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Projects</a>
+            <a href="#services" onclick="closeMobileMenu()"
+                class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Services</a>
+            <a href="#contact" onclick="closeMobileMenu()"
+                class="block px-6 py-4 text-zinc-400 text-base font-medium border-b border-white/5 hover:text-white transition">Contact</a>
+            <a href="resume.html" onclick="closeMobileMenu()"
+                class="block px-6 py-4 text-[#22c55e] text-base font-semibold">Resume</a>
         </div>
     </header>
 
@@ -280,36 +319,60 @@
                         Modern <br> <span class="text-zinc-500">Web Experiences</span>
                     </h1>
                     <p class="text-zinc-400 text-base sm:text-lg max-w-xl leading-relaxed">
-                        Engineering modern, scalable web ecosystems with React, Node.js, and NoSQL cloud technologies. Transforming concepts into high-performance MERN experiences.
+                        Engineering modern, scalable web ecosystems with React, Node.js, and NoSQL cloud technologies.
+                        Transforming concepts into high-performance MERN experiences.
                     </p>
-                    <a href="#contact" class="w-fit bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:scale-105 transition">Get in Touch</a>
-                    
+                    <a href="#contact"
+                        class="w-fit bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:scale-105 transition">Get
+                        in Touch</a>
+
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/5">
-                        <div><h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">1+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Years Exp</p></div>
-                        <div><h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">5+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Projects</p></div>
-                        <div><h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">15+</h4><p class="text-xs text-zinc-500 uppercase mt-1">Techs</p></div>
-                        <div><h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">83%</h4><p class="text-xs text-zinc-500 uppercase mt-1">Satisfaction</p></div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">1+</h4>
+                            <p class="text-xs text-zinc-500 uppercase mt-1">Years Exp</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">5+</h4>
+                            <p class="text-xs text-zinc-500 uppercase mt-1">Projects</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">15+</h4>
+                            <p class="text-xs text-zinc-500 uppercase mt-1">Techs</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">83%</h4>
+                            <p class="text-xs text-zinc-500 uppercase mt-1">Satisfaction</p>
+                        </div>
                     </div>
                 </div>
-                
+
                 <div class="relative flex justify-center items-center mt-4 lg:mt-0">
-                    <div class="w-full max-w-2xl h-[420px] sm:h-[480px] glass rounded-[2.5rem] overflow-hidden relative flex flex-col terminal-card">
+                    <div
+                        class="w-full max-w-2xl h-[420px] sm:h-[480px] glass rounded-[2.5rem] overflow-hidden relative flex flex-col terminal-card">
                         <div class="bg-white/5 px-6 py-3 flex items-center gap-2 border-b border-white/5">
                             <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
                             <span class="ml-4 text-xs text-zinc-400 mono">bash — ahmed@portfolio</span>
                         </div>
-                        <div id="terminal-body" class="p-6 sm:p-8 mono text-sm sm:text-base text-zinc-300 flex-1 overflow-y-auto leading-relaxed">
+                        <div id="terminal-body"
+                            class="p-6 sm:p-8 mono text-sm sm:text-base text-zinc-300 flex-1 overflow-y-auto leading-relaxed">
                             <div id="terminal-content"></div>
                             <span id="current-line"></span><span class="cursor"></span>
                         </div>
-                        <div class="absolute bottom-5 left-1/2 -translate-x-1/2 w-[85%] terminal-footer rounded-2xl p-3 sm:p-5 flex justify-between items-center">
-                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/ReactJS.png" alt="React" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
-                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/NodeJS1.png" alt="Node.js" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
-                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/NodeJS2.png" alt="JavaScript" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
-                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/TailwindCSS.png" alt="Tailwind CSS" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
-                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/MongoDB.png" alt="MongoDB" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
+                        <div
+                            class="absolute bottom-5 left-1/2 -translate-x-1/2 w-[85%] terminal-footer rounded-2xl p-3 sm:p-5 flex justify-between items-center">
+                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/ReactJS.png"
+                                    alt="React" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
+                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/NodeJS1.png"
+                                    alt="Node.js" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
+                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/NodeJS2.png"
+                                    alt="JavaScript" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
+                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img
+                                    src="./assets/logos/TailwindCSS.png" alt="Tailwind CSS"
+                                    class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
+                            <div class="terminal-icon w-10 h-10 sm:w-12 sm:h-12"><img src="./assets/logos/MongoDB.png"
+                                    alt="MongoDB" class="w-6 h-6 sm:w-7 sm:h-7 object-contain"></div>
                         </div>
                     </div>
                 </div>
@@ -319,31 +382,47 @@
         <section id="about" class="py-20 sm:py-32 px-4 sm:px-6">
             <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20">
                 <div class="space-y-6 sm:space-y-8">
-                    <div class="inline-flex items-center gap-2 bg-[#22c55e]/10 border border-[#22c55e]/20 px-4 py-2 rounded-full text-[#22c55e] text-xs font-bold">
+                    <div
+                        class="inline-flex items-center gap-2 bg-[#22c55e]/10 border border-[#22c55e]/20 px-4 py-2 rounded-full text-[#22c55e] text-xs font-bold">
                         <i data-lucide="code-2" class="w-4 h-4"></i> Full-Stack Developer
                     </div>
-                    <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">Crafting Digital <br>Experiences That Matter</h2>
-                    <p class="text-zinc-400 leading-relaxed text-base sm:text-lg">I am Ahmed Al-Jassem, an engineer building modern, scalable web ecosystems with React, Node.js, and NoSQL cloud technologies. I specialize in transforming complex concepts into high-performance MERN experiences.</p>
+                    <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">Crafting Digital
+                        <br>Experiences That Matter</h2>
+                    <p class="text-zinc-400 leading-relaxed text-base sm:text-lg">I am Ahmed Al-Jassem, an engineer
+                        building modern, scalable web ecosystems with React, Node.js, and NoSQL cloud technologies. I
+                        specialize in transforming complex concepts into high-performance MERN experiences.</p>
                     <div class="grid grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8">
-                        <div><h5 class="text-2xl sm:text-3xl font-bold">365+</h5><p class="text-zinc-500 text-xs sm:text-sm">Days of Coding</p></div>
-                        <div><h5 class="text-2xl sm:text-3xl font-bold">2.5K+</h5><p class="text-zinc-500 text-xs sm:text-sm">Code Commits</p></div>
-                        <div><h5 class="text-2xl sm:text-3xl font-bold">1000+</h5><p class="text-zinc-500 text-xs sm:text-sm">Linux Daily Driver</p></div>
+                        <div>
+                            <h5 class="text-2xl sm:text-3xl font-bold">365+</h5>
+                            <p class="text-zinc-500 text-xs sm:text-sm">Days of Coding</p>
+                        </div>
+                        <div>
+                            <h5 class="text-2xl sm:text-3xl font-bold">2.5K+</h5>
+                            <p class="text-zinc-500 text-xs sm:text-sm">Code Commits</p>
+                        </div>
+                        <div>
+                            <h5 class="text-2xl sm:text-3xl font-bold">1000+</h5>
+                            <p class="text-zinc-500 text-xs sm:text-sm">Linux Daily Driver</p>
+                        </div>
                     </div>
                     <div class="flex flex-wrap gap-3 pt-4">
-                        <a href="resume.html" class="inline-flex items-center gap-2 bg-[#22c55e] text-black px-6 py-3 rounded-xl font-bold text-sm hover:opacity-90 transition">
+                        <a href="resume.html"
+                            class="inline-flex items-center gap-2 bg-[#22c55e] text-black px-6 py-3 rounded-xl font-bold text-sm hover:opacity-90 transition">
                             <i data-lucide="file-text" class="w-4 h-4"></i> View Resume
                         </a>
-                        <a href="uses.html" class="inline-flex items-center gap-2 glass px-6 py-3 rounded-xl font-semibold text-sm text-zinc-300 hover:border-[#22c55e]/30 hover:text-white transition">
+                        <a href="uses.html"
+                            class="inline-flex items-center gap-2 glass px-6 py-3 rounded-xl font-semibold text-sm text-zinc-300 hover:border-[#22c55e]/30 hover:text-white transition">
                             <i data-lucide="settings" class="w-4 h-4"></i> My Setup
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-4">
                     <div class="glass p-6 sm:p-8 rounded-3xl col-span-2 card-hover">
                         <i data-lucide="terminal" class="text-[#22c55e] mb-4"></i>
                         <h4 class="text-lg sm:text-xl font-bold mb-2">Expertise</h4>
-                        <p class="text-zinc-500 text-sm">Specialized in MERN stack architecture and web pentesting to ensure every application is both high-performance and secure by design.</p>
+                        <p class="text-zinc-500 text-sm">Specialized in MERN stack architecture and web pentesting to
+                            ensure every application is both high-performance and secure by design.</p>
                     </div>
                     <div class="glass p-6 sm:p-8 rounded-3xl card-hover">
                         <i data-lucide="zap" class="text-[#22c55e] mb-4"></i>
@@ -365,30 +444,55 @@
                     <h2 class="text-4xl sm:text-5xl font-bold mb-4">Skills & Technologies</h2>
                     <p class="text-zinc-500">A comprehensive overview of my technical skills and proficiency levels</p>
                 </div>
-                
+
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
                     <div class="glass skill-card p-6 sm:p-8 rounded-[1rem] space-y-8 sm:space-y-10">
                         <h3 class="text-lg font-semibold border-l-2 border-[#22c55e] pl-4">Frontend Development</h3>
                         <div class="space-y-5 sm:space-y-6">
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">React.js</span> <span class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[95%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">React.js</span>
+                                    <span
+                                        class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[95%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">JavaScript</span> <span class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[98%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">JavaScript</span>
+                                    <span
+                                        class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[98%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">TypeScript</span> <span class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[82%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">TypeScript</span>
+                                    <span
+                                        class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[82%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Next.js</span> <span class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[85%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Next.js</span>
+                                    <span
+                                        class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[85%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Tailwind CSS</span> <span class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[100%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Tailwind
+                                        CSS</span> <span
+                                        class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[100%]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -396,37 +500,72 @@
                         <h3 class="text-lg font-semibold border-l-2 border-[#22c55e] pl-4">Backend & APIs</h3>
                         <div class="space-y-5 sm:space-y-6">
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Node.js</span> <span class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Intermediate</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[70%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Node.js</span>
+                                    <span
+                                        class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[70%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">REST APIs</span> <span class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[88%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">REST APIs</span>
+                                    <span
+                                        class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[88%]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="glass skill-card p-6 sm:p-8 rounded-[1rem] space-y-8 sm:space-y-10 sm:col-span-2 md:col-span-1">
+                    <div
+                        class="glass skill-card p-6 sm:p-8 rounded-[1rem] space-y-8 sm:space-y-10 sm:col-span-2 md:col-span-1">
                         <h3 class="text-lg font-semibold border-l-2 border-[#22c55e] pl-4">Tools & Others</h3>
                         <div class="space-y-5 sm:space-y-6">
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Git & GitHub</span> <span class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[80%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Git &
+                                        GitHub</span> <span
+                                        class="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[80%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Responsive Design</span> <span class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[92%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Responsive
+                                        Design</span> <span
+                                        class="bg-[#22c55e]/20 text-[#22c55e] px-2 py-0.5 rounded-full text-[10px]">Expert</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[92%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Stitch</span> <span class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Intermediate</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[78%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Stitch</span>
+                                    <span
+                                        class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[78%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Vite</span> <span class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[86%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Vite</span> <span
+                                        class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Advanced</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[86%]"></div>
+                                </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Docker</span> <span class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Intermediate</span></div>
-                                <div class="w-full bg-zinc-800 rounded-full h-[6px]"><div class="progress-bar w-[78%]"></div></div>
+                                <div class="flex justify-between text-sm"><span class="text-zinc-300">Docker</span>
+                                    <span
+                                        class="bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full text-[10px]">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 rounded-full h-[6px]">
+                                    <div class="progress-bar w-[78%]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -442,9 +581,10 @@
                     <button class="project-filter" data-filter="fullstack">Full Stack</button>
                     <button class="project-filter" data-filter="soon">Soon</button>
                 </div>
-                
+
                 <div id="projects-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 text-left"></div>
-                <div id="project-empty" class="hidden text-zinc-400 text-lg">No projects available for this filter yet. More coming soon.</div>
+                <div id="project-empty" class="hidden text-zinc-400 text-lg">No projects available for this filter yet.
+                    More coming soon.</div>
             </div>
         </section>
 
@@ -455,21 +595,24 @@
                         <i data-lucide="layout" class="text-[#22c55e]"></i>
                     </div>
                     <h3 class="text-xl sm:text-2xl font-bold">Frontend Development</h3>
-                    <p class="text-zinc-500 leading-relaxed">Building responsive and performant web applications using React, Next.js, and modern CSS frameworks.</p>
+                    <p class="text-zinc-500 leading-relaxed">Building responsive and performant web applications using
+                        React, Next.js, and modern CSS frameworks.</p>
                 </div>
                 <div class="glass p-8 sm:p-10 rounded-[2.5rem] card-hover space-y-6">
                     <div class="w-14 h-14 glass rounded-2xl flex items-center justify-center border-white/10">
                         <i data-lucide="server" class="text-[#22c55e]"></i>
                     </div>
                     <h3 class="text-xl sm:text-2xl font-bold">Backend Development</h3>
-                    <p class="text-zinc-500 leading-relaxed">Designing scalable server-side solutions and APIs with Node.js, Express, and database integrations.</p>
+                    <p class="text-zinc-500 leading-relaxed">Designing scalable server-side solutions and APIs with
+                        Node.js, Express, and database integrations.</p>
                 </div>
                 <div class="glass p-8 sm:p-10 rounded-[2.5rem] card-hover space-y-6 sm:col-span-2 lg:col-span-1">
                     <div class="w-14 h-14 glass rounded-2xl flex items-center justify-center border-white/10">
                         <i data-lucide="package" class="text-[#22c55e]"></i>
                     </div>
                     <h3 class="text-xl sm:text-2xl font-bold">Deployment & DevOps</h3>
-                    <p class="text-zinc-500 leading-relaxed">Deploying modern web applications with CI/CD, cloud hosting, and performance-aware release pipelines.</p>
+                    <p class="text-zinc-500 leading-relaxed">Deploying modern web applications with CI/CD, cloud
+                        hosting, and performance-aware release pipelines.</p>
                 </div>
             </div>
         </section>
@@ -478,53 +621,73 @@
             <div class="max-w-7xl mx-auto">
                 <div class="text-center space-y-4 mb-14 sm:mb-20">
                     <h2 class="text-4xl sm:text-6xl font-bold">Let's Work Together</h2>
-                    <p class="text-zinc-500">Have a project in mind? Let's discuss how we can bring your ideas to life.</p>
+                    <p class="text-zinc-500">Have a project in mind? Let's discuss how we can bring your ideas to life.
+                    </p>
                 </div>
-                
+
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
                     <div class="glass p-7 sm:p-10 rounded-[3rem] space-y-6 sm:space-y-8">
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-zinc-400">Name</label>
-                            <input id="contact-name" type="text" placeholder="Your name" class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-[#22c55e] outline-none transition">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-zinc-400">Email</label>
-                            <input id="contact-email" type="email" placeholder="your.email@example.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-[#22c55e] outline-none transition">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-zinc-400">Message</label>
-                            <textarea id="contact-message" rows="4" placeholder="Tell me about your project..." class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-[#22c55e] outline-none transition resize-none"></textarea>
-                        </div>
-                        <button onclick="sendEmail()" class="w-full btn-gradient py-5 rounded-xl font-bold text-black flex items-center justify-center gap-2">
-                            Send Message <i data-lucide="send" class="w-5 h-5"></i>
-                        </button>
+                        <form action="https://formspree.io/f/xdkyadzv" method="POST" class="space-y-6 sm:space-y-8">
+                            <div class="space-y-2">
+                                <label for="contact-name" class="text-sm font-medium text-zinc-400">Name</label>
+                                <input id="contact-name" name="name" type="text" placeholder="Your name" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-[#22c55e] outline-none transition">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="contact-email" class="text-sm font-medium text-zinc-400">Email</label>
+                                <input id="contact-email" name="email" type="email" placeholder="your.email@example.com"
+                                    required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-[#22c55e] outline-none transition">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="contact-message" class="text-sm font-medium text-zinc-400">Message</label>
+                                <textarea id="contact-message" name="message" rows="4"
+                                    placeholder="Tell me about your project..." required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-[#22c55e] outline-none transition resize-none"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full btn-gradient py-5 rounded-xl font-bold text-black flex items-center justify-center gap-2">
+                                Send Message <i data-lucide="send" class="w-5 h-5"></i>
+                            </button>
+                        </form>
                     </div>
-                    
+
                     <div class="space-y-8 sm:space-y-12">
                         <h3 class="text-2xl sm:text-3xl font-bold">Let's Connect</h3>
-                        <p class="text-zinc-400 leading-relaxed">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
-                        
+                        <p class="text-zinc-400 leading-relaxed">I'm always open to discussing new projects, creative
+                            ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
+
                         <div class="space-y-4 sm:space-y-6">
-                            <a id="contact-email-link" href="mailto:amj@developer.com" class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
-                                <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
+                            <a id="contact-email-link" href="mailto:amj@developer.com"
+                                class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
+                                <div
+                                    class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
                                     <i class="fa-solid fa-envelope text-[#22c55e]"></i>
                                 </div>
                                 <div>
                                     <p class="text-xs text-zinc-500 uppercase tracking-widest">Email</p>
-                                    <p id="contact-email-text" class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">amj@developer.com</p>
+                                    <p id="contact-email-text"
+                                        class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">
+                                        amj@developer.com</p>
                                 </div>
                             </a>
-                            <a id="contact-whatsapp-link" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
-                                <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
+                            <a id="contact-whatsapp-link" href="https://wa.me/963999999999" target="_blank"
+                                rel="noreferrer"
+                                class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl card-hover group">
+                                <div
+                                    class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
                                     <i class="fa-brands fa-whatsapp text-[#22c55e] text-lg"></i>
                                 </div>
                                 <div>
                                     <p class="text-xs text-zinc-500 uppercase tracking-widest">WhatsApp / Phone</p>
-                                    <p id="contact-phone-text" class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">+963 999 999 999</p>
+                                    <p id="contact-phone-text"
+                                        class="text-base sm:text-lg font-bold group-hover:text-[#22c55e] transition">
+                                        +963 999 999 999</p>
                                 </div>
                             </a>
                             <div class="flex items-center gap-5 sm:gap-6 glass p-5 sm:p-6 rounded-3xl">
-                                <div class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
+                                <div
+                                    class="w-12 h-12 glass rounded-xl flex items-center justify-center border-green-500/20 flex-shrink-0">
                                     <i class="fa-solid fa-location-dot text-[#22c55e]"></i>
                                 </div>
                                 <div>
@@ -533,20 +696,29 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="space-y-4">
                             <p class="text-sm text-zinc-500">Connect with me</p>
                             <div class="flex gap-3 sm:gap-4">
-                                <a id="social-whatsapp" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="social-link p-4 glass rounded-xl text-[#25d366] hover:bg-[#25d366] hover:text-white" title="WhatsApp">
+                                <a id="social-whatsapp" href="https://wa.me/963999999999" target="_blank"
+                                    rel="noreferrer"
+                                    class="social-link p-4 glass rounded-xl text-[#25d366] hover:bg-[#25d366] hover:text-white"
+                                    title="WhatsApp">
                                     <i class="fa-brands fa-whatsapp text-lg"></i>
                                 </a>
-                                <a id="social-phone" href="tel:+963999999999" class="social-link p-4 glass rounded-xl text-[#22c55e] hover:bg-[#22c55e] hover:text-black" title="Phone">
+                                <a id="social-phone" href="tel:+963999999999"
+                                    class="social-link p-4 glass rounded-xl text-[#22c55e] hover:bg-[#22c55e] hover:text-black"
+                                    title="Phone">
                                     <i class="fa-solid fa-phone text-lg"></i>
                                 </a>
-                                <a id="social-email" href="mailto:amj@developer.com" class="social-link p-4 glass rounded-xl hover:bg-white hover:text-black transition" title="Email">
+                                <a id="social-email" href="mailto:amj@developer.com"
+                                    class="social-link p-4 glass rounded-xl hover:bg-white hover:text-black transition"
+                                    title="Email">
                                     <i class="fa-solid fa-envelope text-lg"></i>
                                 </a>
-                                <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="social-link p-4 glass rounded-xl text-[#22c55e] hover:bg-[#0077b5] hover:text-white transition" title="LinkedIn">
+                                <a href="https://linkedin.com" target="_blank" rel="noreferrer"
+                                    class="social-link p-4 glass rounded-xl text-[#22c55e] hover:bg-[#0077b5] hover:text-white transition"
+                                    title="LinkedIn">
                                     <i class="fa-brands fa-linkedin-in text-lg"></i>
                                 </a>
                             </div>
@@ -563,15 +735,21 @@
             <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-16 mb-16 sm:mb-24">
                 <div class="space-y-6">
                     <h4 class="text-4xl font-bold text-[#22c55e]">AMJ</h4>
-                    <p class="text-zinc-500 leading-relaxed">Crafting seamless digital experiences with modern web technologies and engineering precision.</p>
+                    <p class="text-zinc-500 leading-relaxed">Crafting seamless digital experiences with modern web
+                        technologies and engineering precision.</p>
                     <div class="space-y-3">
-                        <a id="footer-email-link" href="mailto:amj@developer.com" class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
+                        <a id="footer-email-link" href="mailto:amj@developer.com"
+                            class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
                             <i class="fa-solid fa-envelope text-[#22c55e]"></i>
-                            <span id="footer-email-text" class="text-sm font-medium group-hover:text-[#22c55e] transition">amj@developer.com</span>
+                            <span id="footer-email-text"
+                                class="text-sm font-medium group-hover:text-[#22c55e] transition">amj@developer.com</span>
                         </a>
-                        <a id="footer-whatsapp-link" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
+                        <a id="footer-whatsapp-link" href="https://wa.me/963999999999" target="_blank" rel="noreferrer"
+                            class="flex items-center gap-3 glass p-4 rounded-xl hover:border-[#22c55e]/40 transition group">
                             <i class="fa-brands fa-whatsapp text-[#22c55e]"></i>
-                            <span id="footer-phone-text" class="text-sm font-medium group-hover:text-[#22c55e] transition">+963 999 999 999</span>
+                            <span id="footer-phone-text"
+                                class="text-sm font-medium group-hover:text-[#22c55e] transition">+963 999 999
+                                999</span>
                         </a>
                         <div class="flex items-center gap-3 glass p-4 rounded-xl">
                             <i class="fa-solid fa-location-dot text-[#22c55e]"></i>
@@ -579,7 +757,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-8">
                     <div class="space-y-6">
                         <h5 class="text-xl font-bold">Quick Links</h5>
@@ -594,35 +772,46 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="space-y-6 sm:space-y-8">
                     <h5 class="text-xl font-bold">Connect With Me</h5>
-                    <p class="text-zinc-500 text-sm leading-relaxed">Let's connect and create something amazing together.</p>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Let's connect and create something amazing
+                        together.</p>
                     <div class="flex flex-wrap gap-3 sm:gap-4">
-                        <a id="footer-social-whatsapp" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="social-link p-3 glass rounded-lg text-[#25d366] hover:bg-[#25d366] hover:text-white" title="WhatsApp">
+                        <a id="footer-social-whatsapp" href="https://wa.me/963999999999" target="_blank"
+                            rel="noreferrer"
+                            class="social-link p-3 glass rounded-lg text-[#25d366] hover:bg-[#25d366] hover:text-white"
+                            title="WhatsApp">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                         </a>
-                        <a id="footer-social-phone" href="tel:+963999999999" class="social-link p-3 glass rounded-lg text-[#22c55e] hover:bg-[#22c55e] hover:text-black" title="Phone">
+                        <a id="footer-social-phone" href="tel:+963999999999"
+                            class="social-link p-3 glass rounded-lg text-[#22c55e] hover:bg-[#22c55e] hover:text-black"
+                            title="Phone">
                             <i class="fa-solid fa-phone text-lg"></i>
                         </a>
-                        <a id="footer-social-email" href="mailto:amj@developer.com" class="social-link p-3 glass rounded-lg hover:bg-white hover:text-black transition" title="Email">
+                        <a id="footer-social-email" href="mailto:amj@developer.com"
+                            class="social-link p-3 glass rounded-lg hover:bg-white hover:text-black transition"
+                            title="Email">
                             <i class="fa-solid fa-envelope text-lg"></i>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="social-link p-3 glass rounded-lg text-[#22c55e] hover:bg-[#0077b5] hover:text-white transition" title="LinkedIn">
+                        <a href="https://linkedin.com" target="_blank" rel="noreferrer"
+                            class="social-link p-3 glass rounded-lg text-[#22c55e] hover:bg-[#0077b5] hover:text-white transition"
+                            title="LinkedIn">
                             <i class="fa-brands fa-linkedin-in text-lg"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="pt-8 sm:pt-12 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-8 text-center">
+
+            <div
+                class="pt-8 sm:pt-12 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-8 text-center">
                 <p class="text-zinc-600 text-sm font-bold tracking-widest uppercase italic">"CHALLENGE EVERY DAY"</p>
                 <p class="text-zinc-600 text-sm">© 2026 Ahmed Al-Jassem. All rights reserved.</p>
-                <p class="text-zinc-600 text-sm">Built with <span class="text-[#22c55e]">❤</span> using React & Tailwind</p>
+                <p class="text-zinc-600 text-sm">Built with <span class="text-[#22c55e]">❤</span> using React & Tailwind
+                </p>
             </div>
         </div>
     </footer>
-
     <script>
         lucide.createIcons();
 
@@ -885,4 +1074,5 @@
         });
     </script>
 </body>
+
 </html>
