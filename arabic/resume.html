@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية — أحمد الجاسم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #22c55e;
+            --dark-bg: #050505;
+            --card-bg: rgba(10, 12, 16, 0.78);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            min-height: 100vh;
+            background-color: var(--dark-bg);
+            background-image:
+                radial-gradient(circle at 12% 20%, rgba(34, 197, 94, 0.10), transparent 22%),
+                radial-gradient(circle at 82% 18%, rgba(34, 197, 94, 0.05), transparent 18%),
+                radial-gradient(circle at 70% 82%, rgba(255, 255, 255, 0.04), transparent 24%);
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'Fira Code', monospace; }
+        #amj-logo {
+            background: linear-gradient(90deg, #22c55e 0%, #22c55e var(--scroll-percent, 0%), #ffffff var(--scroll-percent, 0%), #ffffff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.1s ease;
+        }
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+        }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            border-color: rgba(34,197,94,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -16px rgba(34,197,94,0.2);
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .btn-gradient:hover { opacity: 0.92; transform: translateY(-1px); }
+
+        .timeline-line {
+            position: absolute; right: 1.25rem; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #22c55e 0%, rgba(34,197,94,0.08) 100%);
+        }
+        .timeline-dot {
+            position: absolute; right: 0.55rem; top: 1.5rem;
+            width: 1.4rem; height: 1.4rem; border-radius: 50%;
+            background: #050505; border: 2px solid #22c55e;
+            box-shadow: 0 0 12px rgba(34,197,94,0.4); z-index: 1;
+        }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:#050505; }
+        ::-webkit-scrollbar-thumb { background:#222; border-radius:10px; }
+
+        #print-resume { display: none; }
+
+        @media print {
+            @page { size: A4; margin: 1.4cm 1.6cm; }
+            body > * { display: none !important; }
+            #print-resume {
+                display: block !important;
+                font-family: 'Cairo', Arial, sans-serif;
+                color: #111;
+                background: #fff;
+                font-size: 10pt;
+                line-height: 1.6;
+                direction: rtl;
+            }
+            .pr-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                border-bottom: 2.5px solid #22c55e;
+                padding-bottom: 14px;
+                margin-bottom: 18px;
+            }
+            .pr-header h1 { font-size: 24pt; font-weight: 700; color: #111; margin: 0 0 4px; }
+            .pr-header .pr-title { font-size: 11pt; font-weight: 600; color: #22c55e; margin: 0 0 10px; }
+            .pr-header .pr-contact { display: flex; flex-direction: column; gap: 3px; font-size: 8.5pt; color: #444; text-align: left; }
+            .pr-section { margin-bottom: 16px; page-break-inside: avoid; }
+            .pr-section-title {
+                font-size: 10.5pt; font-weight: 700; text-transform: uppercase;
+                letter-spacing: 0.04em; color: #22c55e;
+                border-bottom: 1px solid #e5e7eb;
+                padding-bottom: 4px; margin-bottom: 10px;
+            }
+            .pr-text { font-size: 9.5pt; color: #333; line-height: 1.7; }
+            .pr-job { margin-bottom: 13px; page-break-inside: avoid; }
+            .pr-job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3px; }
+            .pr-job-title { font-size: 10.5pt; font-weight: 700; color: #111; }
+            .pr-job-date { font-size: 8.5pt; color: #666; font-style: italic; white-space: nowrap; margin-right: 10px; }
+            .pr-job-company { font-size: 9pt; color: #22c55e; font-weight: 600; margin-bottom: 5px; }
+            .pr-job ul { margin: 0; padding-right: 16px; }
+            .pr-job li { font-size: 9pt; color: #333; margin-bottom: 2px; }
+            .pr-job .pr-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+            .pr-tag { font-size: 7.5pt; padding: 1px 7px; border-radius: 20px; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-weight: 600; }
+            .pr-edu { margin-bottom: 10px; }
+            .pr-edu-header { display: flex; justify-content: space-between; }
+            .pr-edu-degree { font-size: 10pt; font-weight: 700; color: #111; }
+            .pr-edu-date { font-size: 8.5pt; color: #666; font-style: italic; }
+            .pr-edu-school { font-size: 9pt; color: #22c55e; font-weight: 600; margin: 2px 0 3px; }
+            .pr-edu-note { font-size: 9pt; color: #444; }
+            .pr-skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+            .pr-skill-group h4 { font-size: 9pt; font-weight: 700; color: #111; margin: 0 0 5px; text-transform: uppercase; }
+            .pr-skill-group .pr-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+            .pr-certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+            .pr-cert { font-size: 9pt; }
+            .pr-cert strong { color: #111; display: block; }
+            .pr-cert span { color: #666; font-size: 8.5pt; }
+            .pr-langs { display: flex; gap: 24px; }
+            .pr-lang strong { font-size: 9.5pt; color: #111; }
+            .pr-lang span { font-size: 8.5pt; color: #22c55e; font-weight: 600; display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="print-resume">
+        <div class="pr-header">
+            <div>
+                <h1>أحمد الجاسم</h1>
+                <p class="pr-title">مطوّر ويب Full-Stack</p>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:8.5pt;color:#444;margin-top:4px;">
+                    <span>✉ amj@developer.com</span>
+                    <span>📱 +963 999 999 999</span>
+                    <span>📍 حلب، سوريا</span>
+                    <span>💼 linkedin.com/in/ahmedalj</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-section">
+            <div class="pr-section-title">الملخص المهني</div>
+            <p class="pr-text">مطوّر ويب Full-Stack شغوف بالبناء وحل المشكلات، أمتلك أكثر من 3 سنوات من الخبرة العملية في تصميم وبناء تطبيقات ويب متكاملة وعالية الأداء. متخصص في مكدّس MERN مع اهتمام عميق بتجربة المستخدم وجودة الكود. قادر على قيادة المشروع من مرحلة الفكرة حتى الإطلاق، مع التزام دائم بأفضل الممارسات البرمجية.</p>
+        </div>
+
+        <div class="pr-section">
+            <div class="pr-section-title">الخبرة العملية</div>
+            <div class="pr-job">
+                <div class="pr-job-header">
+                    <span class="pr-job-title">مطوّر Full-Stack مستقل</span>
+                    <span class="pr-job-date">2022 — الحاضر</span>
+                </div>
+                <div class="pr-job-company">عمل حر · عن بُعد</div>
+                <ul>
+                    <li>تصميم وبناء أكثر من 50 تطبيق ويب مخصص لعملاء من قطاعات متنوعة.</li>
+                    <li>بناء تطبيقات MERN متكاملة مع تكامل REST APIs وميزات الوقت الفعلي.</li>
+                    <li>تسليم واجهات متجاوبة وسهلة الاستخدام باستخدام React و Tailwind CSS و Next.js.</li>
+                    <li>الحفاظ على معدل رضا عملاء 98% من خلال التواصل الواضح والتسليم في الوقت المحدد.</li>
+                    <li>إعداد مسارات CI/CD ونشر التطبيقات على Vercel و Netlify و GitHub Pages.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="pr-tag">React</span><span class="pr-tag">Node.js</span>
+                    <span class="pr-tag">MongoDB</span><span class="pr-tag">Tailwind CSS</span><span class="pr-tag">Next.js</span>
+                </div>
+            </div>
+            <div class="pr-job">
+                <div class="pr-job-header">
+                    <span class="pr-job-title">مطوّر واجهة أمامية مبتدئ</span>
+                    <span class="pr-job-date">2021 — 2022</span>
+                </div>
+                <div class="pr-job-company">وكالة تقنية · حلب، سوريا</div>
+                <ul>
+                    <li>بناء وصيانة واجهات أمامية متجاوبة لمشاريع عملاء الوكالة.</li>
+                    <li>التعاون مع مطوري الخلفية لدمج REST APIs في واجهات React.</li>
+                    <li>تحسين أداء تحميل الصفحات بنسبة 40% عبر تقسيم الكود والتحميل الكسول.</li>
+                    <li>المشاركة في مراجعات الكود وتخطيط السبرينت والاجتماعات اليومية.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">React</span>
+                    <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">JavaScript</span>
+                    <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">CSS3</span>
+                    <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">Git</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-section">
+            <div class="pr-section-title">التعليم</div>
+            <div class="pr-edu">
+                <div class="pr-edu-header">
+                    <span class="pr-edu-degree">بكالوريوس علوم — علم الحاسوب</span>
+                    <span class="pr-edu-date">2018 — 2022</span>
+                </div>
+                <div class="pr-edu-school">جامعة حلب</div>
+                <div class="pr-edu-note">تخصص في هندسة البرمجيات والخوارزميات وهياكل البيانات وتطوير تطبيقات الويب. تخرّج بامتياز.</div>
+            </div>
+        </div>
+
+        <div class="pr-section">
+            <div class="pr-section-title">المهارات التقنية</div>
+            <div class="pr-skills-grid">
+                <div class="pr-skill-group">
+                    <h4>الواجهة الأمامية</h4>
+                    <div class="pr-tags">
+                        <span class="pr-tag">React.js</span><span class="pr-tag">Next.js</span>
+                        <span class="pr-tag">JavaScript</span><span class="pr-tag">TypeScript</span>
+                        <span class="pr-tag">Tailwind CSS</span><span class="pr-tag">Redux</span>
+                    </div>
+                </div>
+                <div class="pr-skill-group">
+                    <h4>الخلفية</h4>
+                    <div class="pr-tags">
+                        <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">Node.js</span>
+                        <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">Express.js</span>
+                        <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">REST APIs</span>
+                        <span class="pr-tag" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">MongoDB</span>
+                    </div>
+                </div>
+                <div class="pr-skill-group">
+                    <h4>الأدوات</h4>
+                    <div class="pr-tags">
+                        <span class="pr-tag" style="background:#f9fafb;color:#374151;border-color:#d1d5db;">Git</span>
+                        <span class="pr-tag" style="background:#f9fafb;color:#374151;border-color:#d1d5db;">Vite</span>
+                        <span class="pr-tag" style="background:#f9fafb;color:#374151;border-color:#d1d5db;">Figma</span>
+                        <span class="pr-tag" style="background:#f9fafb;color:#374151;border-color:#d1d5db;">Vercel</span>
+                        <span class="pr-tag" style="background:#f9fafb;color:#374151;border-color:#d1d5db;">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-section">
+            <div class="pr-section-title">الشهادات</div>
+            <div class="pr-certs-grid">
+                <div class="pr-cert"><strong>Meta Front-End Developer</strong><span>Meta (Coursera) · 2023</span></div>
+                <div class="pr-cert"><strong>MongoDB Associate Developer</strong><span>MongoDB University · 2023</span></div>
+                <div class="pr-cert"><strong>The Web Developer Bootcamp</strong><span>Udemy · 2022</span></div>
+                <div class="pr-cert"><strong>JavaScript Algorithms &amp; Data Structures</strong><span>freeCodeCamp · 2022</span></div>
+            </div>
+        </div>
+
+        <div class="pr-section">
+            <div class="pr-section-title">اللغات</div>
+            <div class="pr-langs">
+                <div class="pr-lang"><strong>العربية</strong><span>اللغة الأم</span></div>
+                <div class="pr-lang"><strong>الإنجليزية</strong><span>مستوى احترافي</span></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 w-full glass">
+        <nav class="w-full px-4 sm:px-8">
+            <div class="w-full flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center gap-1 text-2xl font-bold tracking-tighter">
+                    <span class="text-[#22c55e]">&lt;&gt;</span>
+                    <span id="amj-logo">AMJ</span>
+                </a>
+                <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm text-zinc-400 font-medium">
+                    <a href="index.html#about" class="hover:text-white transition">عنّي</a>
+                    <a href="index.html#skills" class="hover:text-white transition">مهاراتي</a>
+                    <a href="index.html#projects" class="hover:text-white transition">مشاريعي</a>
+                    <a href="index.html#services" class="hover:text-white transition">خدماتي</a>
+                    <a href="index.html#contact" class="hover:text-white transition">تواصل</a>
+                    <a href="resume.html" class="text-[#22c55e] font-semibold">السيرة الذاتية</a>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="window.print()" class="btn-gradient text-black px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i> تحميل PDF
+                    </button>
+                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="قائمة">
+                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
+                        <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" style="display:none; flex-direction:column; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07);">
+            <a href="index.html#about" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">عنّي</a>
+            <a href="index.html#skills" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">مهاراتي</a>
+            <a href="index.html#projects" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">مشاريعي</a>
+            <a href="index.html#services" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">خدماتي</a>
+            <a href="index.html#contact" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">تواصل</a>
+            <a href="resume.html" style="display:block;padding:1rem 2rem;color:#22c55e;font-size:1rem;font-weight:600;">السيرة الذاتية</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-10 sm:space-y-14">
+
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#22c55e] transition font-medium text-sm">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i> العودة للملف الشخصي
+            </a>
+            <button onclick="window.print()" class="btn-gradient text-black px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 self-start sm:self-auto">
+                <i class="fa-solid fa-file-pdf"></i> حفظ كـ PDF
+            </button>
+        </div>
+
+        <div class="glass rounded-2xl sm:rounded-3xl p-6 sm:p-10">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
+                <div class="space-y-2">
+                    <div class="inline-flex items-center gap-2 bg-[#22c55e]/10 border border-[#22c55e]/20 px-3 py-1 rounded-full text-[#22c55e] text-xs font-bold mb-1">
+                        <i data-lucide="file-text" class="w-3 h-3"></i> السيرة الذاتية
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold">أحمد الجاسم</h1>
+                    <p class="text-[#22c55e] font-semibold text-base sm:text-lg mono">Full-Stack Web Developer</p>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 text-sm text-zinc-400 pt-2">
+                        <a href="mailto:amj@developer.com" class="flex items-center gap-2 hover:text-[#22c55e] transition">
+                            <i class="fa-solid fa-envelope text-[#22c55e] w-4"></i> amj@developer.com
+                        </a>
+                        <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-2 hover:text-[#22c55e] transition">
+                            <i class="fa-brands fa-whatsapp text-[#22c55e] w-4"></i> +963 999 999 999
+                        </a>
+                        <span class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-[#22c55e] w-4"></i> حلب، سوريا
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="user" class="w-3.5 h-3.5 text-[#22c55e]"></i>
+                </span>
+                الملخص المهني
+            </h2>
+            <div class="glass rounded-xl sm:rounded-2xl p-5 sm:p-7 text-zinc-400 leading-relaxed text-sm sm:text-base">
+                مطوّر ويب Full-Stack شغوف بالبناء وحل المشكلات، أمتلك أكثر من 3 سنوات من الخبرة العملية في تصميم وبناء تطبيقات ويب متكاملة وعالية الأداء. متخصص في مكدّس MERN مع اهتمام عميق بتجربة المستخدم وجودة الكود. قادر على قيادة المشروع من مرحلة الفكرة حتى الإطلاق، مع التزام دائم بأفضل الممارسات البرمجية والتعلم المستمر.
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#22c55e]"></i>
+                </span>
+                الخبرة العملية
+            </h2>
+            <div class="relative pr-8 sm:pr-10">
+                <div class="timeline-line"></div>
+
+                <div class="relative mb-6">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-xl sm:rounded-2xl p-5 sm:p-7 card-hover space-y-3 sm:space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-base sm:text-xl font-bold">مطوّر Full-Stack مستقل</h3>
+                                <p class="text-[#22c55e] font-semibold text-xs sm:text-sm">عمل حر · عن بُعد</p>
+                            </div>
+                            <span class="self-start sm:self-auto text-xs font-bold mono bg-[#22c55e]/10 text-[#22c55e] border border-[#22c55e]/20 px-3 py-1 rounded-full whitespace-nowrap">2022 — الحاضر</span>
+                        </div>
+                        <ul class="space-y-1.5 text-zinc-400 text-xs sm:text-sm list-disc list-inside">
+                            <li>تصميم وبناء أكثر من 50 تطبيق ويب مخصص لعملاء من قطاعات متنوعة.</li>
+                            <li>بناء تطبيقات MERN متكاملة مع تكامل REST APIs وميزات الوقت الفعلي.</li>
+                            <li>تسليم واجهات متجاوبة وسهلة الاستخدام باستخدام React و Tailwind و Next.js.</li>
+                            <li>الحفاظ على معدل رضا عملاء 98% عبر التواصل الواضح والتسليم في الوقت المحدد.</li>
+                            <li>إعداد مسارات CI/CD ونشر التطبيقات على Vercel و Netlify و GitHub Pages.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+                            <span class="px-2.5 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">React</span>
+                            <span class="px-2.5 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">Node.js</span>
+                            <span class="px-2.5 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">MongoDB</span>
+                            <span class="px-2.5 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">Tailwind</span>
+                            <span class="px-2.5 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">Next.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-xl sm:rounded-2xl p-5 sm:p-7 card-hover space-y-3 sm:space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-base sm:text-xl font-bold">مطوّر واجهة أمامية مبتدئ</h3>
+                                <p class="text-[#22c55e] font-semibold text-xs sm:text-sm">وكالة تقنية · حلب، سوريا</p>
+                            </div>
+                            <span class="self-start sm:self-auto text-xs font-bold mono bg-white/5 text-zinc-400 border border-white/10 px-3 py-1 rounded-full whitespace-nowrap">2021 — 2022</span>
+                        </div>
+                        <ul class="space-y-1.5 text-zinc-400 text-xs sm:text-sm list-disc list-inside">
+                            <li>بناء وصيانة واجهات أمامية متجاوبة لمشاريع عملاء الوكالة.</li>
+                            <li>التعاون مع مطوري الخلفية لدمج REST APIs في واجهات React.</li>
+                            <li>تحسين أداء تحميل الصفحات بنسبة 40% عبر تقسيم الكود والتحميل الكسول.</li>
+                            <li>المشاركة في مراجعات الكود والسبرينت والاجتماعات اليومية.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+                            <span class="px-2.5 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">React</span>
+                            <span class="px-2.5 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">JavaScript</span>
+                            <span class="px-2.5 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">CSS3</span>
+                            <span class="px-2.5 py-1 bg-white/5 text-zinc-400 text-xs font-bold rounded-full border border-white/10">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-[#22c55e]"></i>
+                </span>
+                التعليم
+            </h2>
+            <div class="glass rounded-xl sm:rounded-2xl p-5 sm:p-7 card-hover space-y-2">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <h3 class="text-base sm:text-xl font-bold">بكالوريوس علوم — علم الحاسوب</h3>
+                        <p class="text-[#22c55e] font-semibold text-xs sm:text-sm">جامعة حلب</p>
+                    </div>
+                    <span class="self-start text-xs font-bold mono bg-white/5 text-zinc-400 border border-white/10 px-3 py-1 rounded-full">2018 — 2022</span>
+                </div>
+                <p class="text-zinc-400 text-xs sm:text-sm">تخصص في هندسة البرمجيات والخوارزميات وهياكل البيانات وتطوير تطبيقات الويب. تخرّج بامتياز.</p>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="code-2" class="w-3.5 h-3.5 text-[#22c55e]"></i>
+                </span>
+                المهارات التقنية
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="glass rounded-xl sm:rounded-2xl p-5 space-y-3 card-hover">
+                    <h4 class="font-bold text-xs text-zinc-400 uppercase tracking-widest border-b border-white/5 pb-2">الواجهة الأمامية</h4>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">React.js</span>
+                        <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">Next.js</span>
+                        <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">JavaScript</span>
+                        <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">TypeScript</span>
+                        <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">Tailwind CSS</span>
+                        <span class="px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full border border-[#22c55e]/20">Redux</span>
+                    </div>
+                </div>
+                <div class="glass rounded-xl sm:rounded-2xl p-5 space-y-3 card-hover">
+                    <h4 class="font-bold text-xs text-zinc-400 uppercase tracking-widest border-b border-white/5 pb-2">الخلفية</h4>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">Node.js</span>
+                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">Express.js</span>
+                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">REST APIs</span>
+                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20">MongoDB</span>
+                    </div>
+                </div>
+                <div class="glass rounded-xl sm:rounded-2xl p-5 space-y-3 card-hover sm:col-span-2 lg:col-span-1">
+                    <h4 class="font-bold text-xs text-zinc-400 uppercase tracking-widest border-b border-white/5 pb-2">الأدوات والبنية التحتية</h4>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-3 py-1 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Git & GitHub</span>
+                        <span class="px-3 py-1 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Vite</span>
+                        <span class="px-3 py-1 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Figma</span>
+                        <span class="px-3 py-1 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Vercel</span>
+                        <span class="px-3 py-1 bg-white/5 text-zinc-300 text-xs font-bold rounded-full border border-white/10">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-[#22c55e]"></i>
+                </span>
+                الشهادات
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="glass rounded-xl p-5 card-hover flex items-start gap-4">
+                    <div class="w-9 h-9 rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-[#22c55e] text-xs"></i>
+                    </div>
+                    <div><h4 class="font-bold text-sm">Meta Front-End Developer</h4><p class="text-zinc-500 text-xs mt-0.5">Meta (Coursera) · 2023</p></div>
+                </div>
+                <div class="glass rounded-xl p-5 card-hover flex items-start gap-4">
+                    <div class="w-9 h-9 rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-[#22c55e] text-xs"></i>
+                    </div>
+                    <div><h4 class="font-bold text-sm">MongoDB Associate Developer</h4><p class="text-zinc-500 text-xs mt-0.5">MongoDB University · 2023</p></div>
+                </div>
+                <div class="glass rounded-xl p-5 card-hover flex items-start gap-4">
+                    <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-blue-400 text-xs"></i>
+                    </div>
+                    <div><h4 class="font-bold text-sm">The Web Developer Bootcamp</h4><p class="text-zinc-500 text-xs mt-0.5">Udemy · 2022</p></div>
+                </div>
+                <div class="glass rounded-xl p-5 card-hover flex items-start gap-4">
+                    <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-certificate text-blue-400 text-xs"></i>
+                    </div>
+                    <div><h4 class="font-bold text-sm">JavaScript Algorithms & Data Structures</h4><p class="text-zinc-500 text-xs mt-0.5">freeCodeCamp · 2022</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="globe" class="w-3.5 h-3.5 text-[#22c55e]"></i>
+                </span>
+                اللغات
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div class="glass rounded-xl sm:rounded-2xl p-5 card-hover text-center space-y-1">
+                    <div class="text-2xl mb-1">🇸🇦</div>
+                    <h4 class="font-bold text-sm">العربية</h4>
+                    <p class="text-[#22c55e] text-xs font-semibold">اللغة الأم</p>
+                </div>
+                <div class="glass rounded-xl sm:rounded-2xl p-5 card-hover text-center space-y-1">
+                    <div class="text-2xl mb-1">🇬🇧</div>
+                    <h4 class="font-bold text-sm">الإنجليزية</h4>
+                    <p class="text-blue-400 text-xs font-semibold">مستوى احترافي</p>
+                </div>
+            </div>
+        </section>
+
+        <div>
+            <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#22c55e] transition font-medium text-sm">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i> العودة للملف الشخصي
+            </a>
+        </div>
+    </main>
+
+    <footer class="mt-8 py-6 px-4 sm:px-6 border-t border-white/5 text-center">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3 max-w-4xl mx-auto text-zinc-600 text-xs sm:text-sm">
+            <p class="font-bold tracking-widest uppercase italic">"CHALLENGE EVERY DAY"</p>
+            <p>© 2026 أحمد الجاسم.</p>
+            <a href="index.html" class="hover:text-[#22c55e] transition">الملف الشخصي ←</a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        let menuOpen = false;
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+            menuIconOpen.style.display = menuOpen ? 'none' : 'block';
+            menuIconClose.style.display = menuOpen ? 'block' : 'none';
+        });
+        function closeMobileMenu() {
+            menuOpen = false;
+            mobileMenu.style.display = 'none';
+            menuIconOpen.style.display = 'block';
+            menuIconClose.style.display = 'none';
+        }
+        const amjLogo = document.getElementById('amj-logo');
+        window.addEventListener('scroll', () => {
+            const scrollEnd = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollProgress = scrollEnd > 0 ? (window.scrollY / scrollEnd) * 100 : 0;
+            const percent = Math.min(Math.max(scrollProgress, 0), 100);
+            amjLogo.style.setProperty('--scroll-percent', `${percent}%`);
+        });
+    </script>
+</body>
+</html>

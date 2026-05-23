@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أدواتي — أحمد الجاسم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --matrix-green: #22c55e;
+            --dark-bg: #050505;
+            --card-bg: rgba(10, 12, 16, 0.78);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            min-height: 100vh;
+            background-color: var(--dark-bg);
+            background-image:
+                radial-gradient(circle at 12% 20%, rgba(34, 197, 94, 0.10), transparent 22%),
+                radial-gradient(circle at 82% 18%, rgba(34, 197, 94, 0.05), transparent 18%),
+                radial-gradient(circle at 70% 82%, rgba(255, 255, 255, 0.04), transparent 24%);
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'Fira Code', monospace; }
+        #amj-logo {
+            background: linear-gradient(90deg, #22c55e 0%, #22c55e var(--scroll-percent, 0%), #ffffff var(--scroll-percent, 0%), #ffffff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.1s ease;
+        }
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+        }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            border-color: rgba(34,197,94,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -16px rgba(34,197,94,0.2);
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .btn-gradient:hover { opacity: 0.92; transform: translateY(-1px); }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:#050505; }
+        ::-webkit-scrollbar-thumb { background:#222; border-radius:10px; }
+        .uses-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+        .uses-item:hover {
+            border-color: rgba(34,197,94,0.25);
+            background: rgba(34,197,94,0.04);
+            transform: translateX(-4px);
+        }
+        .uses-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(34,197,94,0.08);
+            border: 1px solid rgba(34,197,94,0.18);
+            color: #22c55e;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky top-0 z-50 w-full glass">
+        <nav class="w-full px-4 sm:px-8">
+            <div class="w-full flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center gap-1 text-2xl font-bold tracking-tighter">
+                    <span class="text-[#22c55e]">&lt;&gt;</span> <span id="amj-logo">AMJ</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400 font-medium">
+                    <a href="index.html#about" class="hover:text-white transition">عنّي</a>
+                    <a href="index.html#skills" class="hover:text-white transition">مهاراتي</a>
+                    <a href="index.html#projects" class="hover:text-white transition">مشاريعي</a>
+                    <a href="index.html#services" class="hover:text-white transition">خدماتي</a>
+                    <a href="index.html#contact" class="hover:text-white transition">تواصل</a>
+                    <a href="resume.html" class="hover:text-white transition">السيرة الذاتية</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="index.html#contact" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-zinc-200 transition">وظّفني</a>
+                    <button id="menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white transition" aria-label="قائمة">
+                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
+                        <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" style="display:none; flex-direction:column; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07);">
+            <a href="index.html#about" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">عنّي</a>
+            <a href="index.html#skills" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">مهاراتي</a>
+            <a href="index.html#projects" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">مشاريعي</a>
+            <a href="index.html#services" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">خدماتي</a>
+            <a href="index.html#contact" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">تواصل</a>
+            <a href="resume.html" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#22c55e;font-size:1rem;font-weight:600;">السيرة الذاتية</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 space-y-20">
+
+        <div class="space-y-5">
+            <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#22c55e] transition font-medium text-sm">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i> العودة للملف الشخصي
+            </a>
+            <div class="space-y-4">
+                <div class="section-tag"><i data-lucide="settings" class="w-3.5 h-3.5"></i> بيئة عملي</div>
+                <h1 class="text-4xl sm:text-5xl font-bold">الأدوات التي أستخدمها</h1>
+                <p class="text-zinc-400 text-lg max-w-2xl leading-relaxed">
+                    نظرة شاملة على الأجهزة والبرامج والأدوات التي تُشكّل بيئة عملي اليومية — كل ما أعتمد عليه لبناء تجارب ويب متميزة.
+                </p>
+            </div>
+        </div>
+
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="terminal" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                المحرر والطرفية
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Visual Studio Code</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">محرري الأساسي. سريع وقابل للتخصيص ومليء بالإضافات المفيدة. أقضي معظم يومي هنا.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Zsh + Oh My Zsh</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">شِل متطور مع إضافات للـ git والإكمال التلقائي وتمييز الصياغة. يجعل الطرفية تجربة ممتعة فعلاً.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                        <i class="fa-solid fa-font"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Fira Code</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">خطي المفضل للكود مع ربطات رسومية جميلة. يتناسق تماماً مع أي ثيم داكن.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-zinc-300">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">One Dark Pro Theme</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">ثيم داكن مريح للعين بتباين ممتاز. الخيار الأمثل لجلسات البرمجة الطويلة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="wrench" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                أدوات التطوير
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-brands fa-git-alt"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Git & GitHub</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">التحكم بالإصدارات في كل شيء. أعيش في الـ branches والـ pull requests ورسائل الـ commit.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-orange-500/10 border border-orange-500/20 text-orange-400">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Vite</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">أداة بناء وخادم تطوير فائقة السرعة. استبدلت Create React App في جميع مشاريعي — لا رجعة.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Postman</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">اختبار وتوثيق الـ API. لا غنى عنه عند بناء أو استهلاك REST APIs.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-zinc-300">
+                        <i class="fa-brands fa-npm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">npm / pnpm</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">إدارة الحزم. أُفضّل pnpm لسرعته وكفاءته في استخدام القرص خاصة في المشاريع الكبيرة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="layers" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                الأُطر والمكتبات
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-blue-400/10 border border-blue-400/20 text-blue-400">⚛</div>
+                    <div>
+                        <h4 class="font-bold">React.js</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">إطار الواجهة الأمامية الأساسي لديّ. مبني على المكونات، سريع، ومنظومته هائلة.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-white">▲</div>
+                    <div>
+                        <h4 class="font-bold">Next.js</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">لتطبيقات React الإنتاجية التي تحتاج SSR أو SSG أو مسارات API متكاملة.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Tailwind CSS</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">CSS قائم على الأدوات. لا أتخيل التنسيق بدونه الآن — أصبح جزءاً لا يتجزأ من سير عملي.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-green-700/10 border border-green-700/20 text-green-500">
+                        <i class="fa-brands fa-node-js"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Node.js + Express</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">الخلفية المفضلة لديّ لبناء REST APIs والمنطق الخادمي. مثالي لمشاريع MERN.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-green-900/20 border border-green-900/30 text-green-400">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">MongoDB</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">قاعدة بيانات NoSQL مرنة لمعظم مشاريع الخلفية. تتكامل بشكل طبيعي مع Node.js عبر Mongoose.</p>
+                    </div>
+                </div>
+                <div class="uses-item card-hover">
+                    <div class="uses-icon bg-blue-600/10 border border-blue-600/20 text-blue-400">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Redux Toolkit</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">إدارة الحالة لتطبيقات React المعقدة. RTK جعل Redux ممتعاً في الكتابة فعلاً.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="pen-tool" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                التصميم
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                        <i class="fa-brands fa-figma"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Stitch</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">تصميم UI/UX والنمذجة. أضع الإطارات الأولية قبل كتابة سطر كود واحد.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-pink-500/10 border border-pink-500/20 text-pink-400">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Unsplash + Lucide Icons</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">صور عالية الجودة مجانية ومكتبة أيقونات نظيفة — عنصران أساسيان في أي مشروع واجهة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="cloud" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                الاستضافة والنشر
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-white">▲</div>
+                    <div>
+                        <h4 class="font-bold">AWS</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">خياري لتوسيع تطبيقات MERN. تحكم كامل بـ Linux VPS واستقرار سحابي عالٍ.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">GitHub Pages</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">مثالي لاستضافة المواقع الثابتة ومعارض الأعمال مباشرة من GitHub — مجاني وسريع.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-teal-500/10 border border-teal-500/20 text-teal-400">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Netlify</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">لاستضافة المواقع الثابتة مع معالجة النماذج والدوال اللاخادمية عند الحاجة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/20 flex items-center justify-center">
+                    <i data-lucide="monitor" class="w-4 h-4 text-[#22c55e]"></i>
+                </span>
+                الأجهزة
+            </h2>
+            <div class="glass rounded-2xl p-6 space-y-3">
+                <div class="uses-item">
+                    <div class="uses-icon bg-zinc-800 border border-white/10 text-zinc-300">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">لابتوب التطوير</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">جهازي الرئيسي لكل عمل التطوير — ذاكرة وفيرة ومعالج سريع لضمان سلاسة الأداء.</p>
+                    </div>
+                </div>
+                <div class="uses-item">
+                    <div class="uses-icon bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e]">
+                        <i class="fa-brands fa-linux"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Debian Linux</h4>
+                        <p class="text-zinc-400 text-sm mt-0.5">نظام التشغيل المفضل لديّ. مستقر وسريع ويمنحك تحكماً كاملاً في بيئة التطوير.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="pt-2">
+            <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#22c55e] transition font-medium">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i> العودة للملف الشخصي
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="mt-12 py-8 px-4 sm:px-6 border-t border-white/5">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 max-w-4xl mx-auto text-zinc-600 text-sm">
+            <p class="font-bold tracking-widest uppercase italic">"CHALLENGE EVERY DAY"</p>
+            <p>© 2026 أحمد الجاسم. جميع الحقوق محفوظة.</p>
+            <a href="index.html" class="hover:text-[#22c55e] transition">الملف الشخصي ←</a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        let menuOpen = false;
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+            menuIconOpen.style.display = menuOpen ? 'none' : 'block';
+            menuIconClose.style.display = menuOpen ? 'block' : 'none';
+        });
+
+        function closeMobileMenu() {
+            menuOpen = false;
+            mobileMenu.style.display = 'none';
+            menuIconOpen.style.display = 'block';
+            menuIconClose.style.display = 'none';
+        }
+
+        const amjLogo = document.getElementById('amj-logo');
+        window.addEventListener('scroll', () => {
+            const scrollEnd = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollProgress = scrollEnd > 0 ? (window.scrollY / scrollEnd) * 100 : 0;
+            const percent = Math.min(Math.max(scrollProgress, 0), 100);
+            amjLogo.style.setProperty('--scroll-percent', `${percent}%`);
+        });
+    </script>
+</body>
+</html>
