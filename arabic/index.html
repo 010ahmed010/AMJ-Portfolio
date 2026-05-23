@@ -866,7 +866,7 @@
                         const encodedTitle = encodeURIComponent(project.title || '');
                         const categoryLabel = getCategory(project) === 'fullstack' ? 'Full Stack' : 'مشروع';
                         grid.innerHTML += `
-                            <div class="glass project-card rounded-[2rem] overflow-hidden flex flex-col cursor-pointer group" onclick="window.location.href='project.html?title=${encodedTitle}'">
+                            <div class="glass project-card rounded-xl overflow-hidden flex flex-col cursor-pointer group" onclick="window.location.href='project.html?title=${encodedTitle}'">
                                 <div class="relative overflow-hidden" style="padding-bottom:56%">
                                     <img src="${img}" alt="${project.title || ''}" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110" onerror="this.src='${fallback}'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -876,7 +876,7 @@
                                     </a>
                                 </div>
                                 <div class="p-6 flex-1 flex flex-col gap-4">
-                                    <h3 class="text-xl font-bold">${project.title || ''}</h3>
+                                    <h3 class="text-xl sm:text-2xl font-bold">${project.title || ''}</h3>
                                     <p class="text-zinc-400 text-sm leading-relaxed flex-1">${project.description || ''}</p>
                                     <div class="flex flex-wrap gap-2">${tags}</div>
                                     <span class="text-xs text-[#22c55e] font-semibold flex items-center gap-1">

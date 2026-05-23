@@ -920,7 +920,7 @@
             const categoryLabel = determineCategory(project) === 'fullstack' ? 'Full Stack' : 'Project';
             const techTags = (project.technologies || []).map(tech => `<span class="px-4 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">${tech}</span>`).join('');
             return `
-                <div class="glass project-card rounded-[2rem] overflow-hidden flex flex-col cursor-pointer group" onclick="window.location.href='${detailLink}'">
+                <div class="glass project-card rounded-xl overflow-hidden flex flex-col cursor-pointer group" onclick="window.location.href='${detailLink}'">
                     <div class="relative overflow-hidden" style="padding-bottom:56%">
                         <img src="${cleanImage}" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="${project.title}" onerror="this.src='${fallback}'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
