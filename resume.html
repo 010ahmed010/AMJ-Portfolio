@@ -169,8 +169,8 @@
                 <h1>Ahmed Al-Jassem</h1>
                 <p class="pr-title">Full-Stack Web Developer</p>
                 <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:8.5pt;color:#444;margin-top:4px;">
-                    <span>✉ amj@developer.com</span>
-                    <span>📱 +963 999 999 999</span>
+                    <span id="print-email">✉ amj@developer.com</span>
+                    <span id="print-phone">📱 +963 999 999 999</span>
                     <span>📍 Aleppo, Syria</span>
                     <span>💼 linkedin.com/in/ahmedalj</span>
                 </div>
@@ -362,11 +362,11 @@
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Ahmed Al-Jassem</h1>
                     <p class="text-[#22c55e] font-semibold text-base sm:text-lg mono">Full-Stack Web Developer</p>
                     <div class="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 text-sm text-zinc-400 pt-2">
-                        <a href="mailto:amj@developer.com" class="flex items-center gap-2 hover:text-[#22c55e] transition">
-                            <i class="fa-solid fa-envelope text-[#22c55e] w-4"></i> amj@developer.com
+                        <a id="resume-email-link" href="mailto:amj@developer.com" class="flex items-center gap-2 hover:text-[#22c55e] transition">
+                            <i class="fa-solid fa-envelope text-[#22c55e] w-4"></i> <span id="resume-email-text">amj@developer.com</span>
                         </a>
-                        <a href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-2 hover:text-[#22c55e] transition">
-                            <i class="fa-brands fa-whatsapp text-[#22c55e] w-4"></i> +963 999 999 999
+                        <a id="resume-wa-link" href="https://wa.me/963999999999" target="_blank" rel="noreferrer" class="flex items-center gap-2 hover:text-[#22c55e] transition">
+                            <i class="fa-brands fa-whatsapp text-[#22c55e] w-4"></i> <span id="resume-wa-text">+963 999 999 999</span>
                         </a>
                         <span class="flex items-center gap-2">
                             <i class="fa-solid fa-location-dot text-[#22c55e] w-4"></i> Aleppo, Syria
@@ -620,6 +620,35 @@
             const percent = Math.min(Math.max(scrollProgress, 0), 100);
             amjLogo.style.setProperty('--scroll-percent', `${percent}%`);
         });
+
+        async function loadResumeContact() {
+            try {
+                const res = await fetch('https://010ahmed010.github.io/api/AMJ-Portfolio.json');
+                const data = await res.json();
+                const c = data.contactDetails;
+                if (!c) return;
+                const phone = c.whatsapp || c.phone || '';
+                const email = c.email || '';
+                const waLink = `https://wa.me/${phone.replace(/\D/g, '')}`;
+
+                const emailLink = document.getElementById('resume-email-link');
+                const emailText = document.getElementById('resume-email-text');
+                const waEl = document.getElementById('resume-wa-link');
+                const waText = document.getElementById('resume-wa-text');
+                const printEmail = document.getElementById('print-email');
+                const printPhone = document.getElementById('print-phone');
+
+                if (emailLink) emailLink.href = `mailto:${email}`;
+                if (emailText) emailText.textContent = email;
+                if (waEl) waEl.href = waLink;
+                if (waText) waText.textContent = phone;
+                if (printEmail) printEmail.textContent = `✉ ${email}`;
+                if (printPhone) printPhone.textContent = `📱 ${phone}`;
+            } catch(e) {
+                console.error('Resume contact fetch failed:', e);
+            }
+        }
+        loadResumeContact();
     </script>
 </body>
 </html>
