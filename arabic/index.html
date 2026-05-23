@@ -862,22 +862,27 @@
                         const fallback = 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop';
                         const img = project.imageURL ? project.imageURL.trim() : fallback;
                         const link = project.redirectURL ? (project.redirectURL.trim().startsWith('http') ? project.redirectURL.trim() : 'https://' + project.redirectURL.trim()) : '#';
-                        const tags = (project.technologies || []).slice(0, 3).map(t => `<span class="project-tag">${t}</span>`).join('');
+                        const tags = (project.technologies || []).map(t => `<span class="px-4 py-1.5 bg-[#22c55e]/10 text-[#22c55e] text-xs font-bold rounded-full">${t}</span>`).join('');
                         const encodedTitle = encodeURIComponent(project.title || '');
+                        const categoryLabel = getCategory(project) === 'fullstack' ? 'Full Stack' : 'مشروع';
                         grid.innerHTML += `
-                            <div class="glass project-card rounded-[2rem] overflow-hidden relative flex flex-col">
+                            <div class="glass project-card rounded-[2rem] overflow-hidden flex flex-col cursor-pointer group" onclick="window.location.href='project.html?title=${encodedTitle}'">
                                 <div class="relative overflow-hidden" style="padding-bottom:56%">
-                                    <img src="${img}" alt="${project.title || ''}" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='${fallback}'">
+                                    <img src="${img}" alt="${project.title || ''}" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110" onerror="this.src='${fallback}'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                                    <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-black/50 border border-white/10 text-zinc-300">${categoryLabel}</div>
+                                    <a href="${link}" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="project-link bg-zinc-900/80 rounded-xl" title="العرض المباشر">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </a>
                                 </div>
                                 <div class="p-6 flex-1 flex flex-col gap-4">
                                     <h3 class="text-xl font-bold">${project.title || ''}</h3>
-                                    <p class="text-zinc-400 text-sm leading-relaxed flex-1">${(project.description || '').slice(0, 100)}${(project.description || '').length > 100 ? '...' : ''}</p>
+                                    <p class="text-zinc-400 text-sm leading-relaxed flex-1">${project.description || ''}</p>
                                     <div class="flex flex-wrap gap-2">${tags}</div>
+                                    <span class="text-xs text-[#22c55e] font-semibold flex items-center gap-1">
+                                        عرض التفاصيل <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                                    </span>
                                 </div>
-                                <a href="project.html?title=${encodedTitle}" class="project-link">
-                                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                                </a>
                             </div>`;
                     });
                     lucide.createIcons();
