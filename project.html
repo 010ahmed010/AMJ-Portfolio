@@ -290,7 +290,7 @@
             document.getElementById('proj-image').src = imgUrl;
             document.getElementById('proj-image').alt = project.title;
             document.getElementById('proj-title').textContent = project.title;
-            document.getElementById('proj-description').textContent = project.description || 'No description provided.';
+            document.getElementById('proj-description').textContent = project.descriptionEn || project.descriptionAr || 'No description provided.';
             document.getElementById('proj-live-link').href = liveLink;
             document.getElementById('proj-category-badge').textContent = category;
             document.getElementById('proj-category-text').textContent = category;

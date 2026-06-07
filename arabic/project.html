@@ -276,7 +276,7 @@
             document.getElementById('proj-image').src = imgUrl;
             document.getElementById('proj-image').alt = project.title;
             document.getElementById('proj-title').textContent = project.title;
-            document.getElementById('proj-description').textContent = project.description || 'لا يوجد وصف لهذا المشروع.';
+            document.getElementById('proj-description').textContent = project.descriptionAr || project.descriptionEn || 'لا يوجد وصف لهذا المشروع.';
             document.getElementById('proj-live-link').href = liveLink;
             document.getElementById('proj-category-badge').textContent = category;
             document.getElementById('proj-category-text').textContent = category;

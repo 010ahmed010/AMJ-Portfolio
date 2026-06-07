@@ -341,20 +341,20 @@
 
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/5">
                         <div>
-                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">+1</h4>
-                            <p class="text-xs text-zinc-500 mt-1">سنة خبرة</p>
+                            <h4 id="stat-exp-value" class="text-2xl sm:text-3xl font-bold text-[#22c55e]">+1</h4>
+                            <p id="stat-exp-label" class="text-xs text-zinc-500 mt-1">سنة خبرة</p>
                         </div>
                         <div>
-                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">+5</h4>
-                            <p class="text-xs text-zinc-500 mt-1">مشاريع</p>
+                            <h4 id="stat-projects-value" class="text-2xl sm:text-3xl font-bold text-[#22c55e]">+5</h4>
+                            <p id="stat-projects-label" class="text-xs text-zinc-500 mt-1">مشاريع</p>
                         </div>
                         <div>
-                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">+15</h4>
-                            <p class="text-xs text-zinc-500 mt-1">تقنية</p>
+                            <h4 id="stat-tech-value" class="text-2xl sm:text-3xl font-bold text-[#22c55e]">+15</h4>
+                            <p id="stat-tech-label" class="text-xs text-zinc-500 mt-1">تقنية</p>
                         </div>
                         <div>
-                            <h4 class="text-2xl sm:text-3xl font-bold text-[#22c55e]">83%</h4>
-                            <p class="text-xs text-zinc-500 mt-1">رضا العملاء</p>
+                            <h4 id="stat-satisfaction-value" class="text-2xl sm:text-3xl font-bold text-[#22c55e]">83%</h4>
+                            <p id="stat-satisfaction-label" class="text-xs text-zinc-500 mt-1">رضا العملاء</p>
                         </div>
                     </div>
                 </div>
@@ -882,7 +882,7 @@
                                 </div>
                                 <div class="p-6 flex-1 flex flex-col gap-4">
                                     <h3 class="text-xl sm:text-2xl font-bold">${project.title || ''}</h3>
-                                    <p class="text-zinc-400 text-sm leading-relaxed flex-1">${project.description || ''}</p>
+                                    <p class="text-zinc-400 text-sm leading-relaxed flex-1">${project.descriptionAr || project.descriptionEn || ''}</p>
                                     <div class="flex flex-wrap gap-2">${tags}</div>
                                     <span class="text-xs text-[#22c55e] font-semibold flex items-center gap-1">
                                         عرض التفاصيل <i class="fa-solid fa-arrow-left text-[10px]"></i>
@@ -947,6 +947,20 @@
                 if (footerSocialWa) footerSocialWa.href = waLink;
                 if (footerSocialPhone) footerSocialPhone.href = `tel:${phone.replace(/\s/g, '')}`;
                 if (footerSocialEmail) footerSocialEmail.href = `mailto:${email}`;
+
+                // Developer stats
+                const dev = data.developer;
+                if (dev) {
+                    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+                    set('stat-exp-value',          '+' + dev.experience.value);
+                    set('stat-exp-label',          dev.experience.labelAr);
+                    set('stat-projects-value',     '+' + dev.projectsNumber.value);
+                    set('stat-projects-label',     dev.projectsNumber.labelAr);
+                    set('stat-tech-value',         '+' + dev.technologies.value);
+                    set('stat-tech-label',         dev.technologies.labelAr);
+                    set('stat-satisfaction-value', dev.customerSatisfaction.value + '%');
+                    set('stat-satisfaction-label', dev.customerSatisfaction.labelAr);
+                }
             } catch (e) {}
         }
 
