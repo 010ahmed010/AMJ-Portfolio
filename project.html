@@ -102,13 +102,31 @@
                 </div>
             </div>
         </nav>
-        <div id="mobile-menu" style="display:none; flex-direction:column; background:rgba(5,5,5,0.97); border-top:1px solid rgba(255,255,255,0.07);">
-            <a href="index.html#about" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">About</a>
-            <a href="index.html#skills" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Skills</a>
-            <a href="index.html#projects" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Projects</a>
-            <a href="index.html#services" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Services</a>
-            <a href="index.html#contact" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#a1a1aa;font-size:1rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.05);">Contact</a>
-            <a href="resume.html" onclick="closeMobileMenu()" style="display:block;padding:1rem 2rem;color:#22c55e;font-size:1rem;font-weight:600;">Resume</a>
+        <div id="mobile-menu" class="hidden md:hidden flex-col w-full bg-[rgba(5,5,5,0.98)] border-t border-white/10">
+            <div class="flex items-center justify-between px-5 pt-5 pb-2">
+                <button onclick="closeMobileMenu()" class="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <span class="text-xs text-zinc-500 uppercase tracking-widest font-semibold">Navigate</span>
+            </div>
+            <a href="index.html" onclick="closeMobileMenu()" class="flex items-center justify-between px-6 py-4 text-2xl font-bold text-white hover:text-[#22c55e] transition group">
+                <span>Home</span>
+                <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-600 group-hover:text-[#22c55e] transition"></i>
+            </a>
+            <a href="resume.html" onclick="closeMobileMenu()" class="flex items-center justify-between px-6 py-4 text-2xl font-bold text-white hover:text-[#22c55e] transition group border-b border-white/5">
+                <span>Resume</span>
+                <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-600 group-hover:text-[#22c55e] transition"></i>
+            </a>
+            <div class="px-5 pt-5 pb-6">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest font-semibold text-right mb-3">Page Sections</p>
+                <div class="grid grid-cols-2 gap-2">
+                    <a href="index.html#about" onclick="closeMobileMenu()" class="flex items-center justify-center px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:border-[#22c55e]/50 hover:bg-[#22c55e]/5 transition text-sm font-medium">About</a>
+                    <a href="index.html#skills" onclick="closeMobileMenu()" class="flex items-center justify-center px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:border-[#22c55e]/50 hover:bg-[#22c55e]/5 transition text-sm font-medium">Skills</a>
+                    <a href="index.html#projects" onclick="closeMobileMenu()" class="flex items-center justify-center px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:border-[#22c55e]/50 hover:bg-[#22c55e]/5 transition text-sm font-medium">Projects</a>
+                    <a href="index.html#services" onclick="closeMobileMenu()" class="flex items-center justify-center px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:border-[#22c55e]/50 hover:bg-[#22c55e]/5 transition text-sm font-medium">Services</a>
+                    <a href="index.html#contact" onclick="closeMobileMenu()" class="col-span-2 flex items-center justify-center px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:border-[#22c55e]/50 hover:bg-[#22c55e]/5 transition text-sm font-medium">Contact</a>
+                </div>
+            </div>
         </div>
     </header>
 
